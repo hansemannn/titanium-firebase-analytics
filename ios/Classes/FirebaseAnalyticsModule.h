@@ -8,7 +8,6 @@
 #import "TiModule.h"
 
 @interface FirebaseAnalyticsModule : TiModule {
-
 }
 
 - (void)configure:(id)arguments;
