@@ -76,6 +76,11 @@
   [FIRAnalytics setUserID:userID];
 }
 
+- (void)setEnabled:(NSNumber *)enabled
+{
+  [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[TiUtils boolValue:enabled]];
+}
+
 - (void)setScreenNameAndScreenClass:(id)arguments
 {
   ENSURE_SINGLE_ARG(arguments, NSDictionary);

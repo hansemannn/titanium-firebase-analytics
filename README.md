@@ -6,30 +6,33 @@ Use the native  Firebase SDK in Axway Titanium. This repository is part of the [
 
 ## API's
 
-### Methods
+### `FirebaseAnalytics`
 
-#### `configure()`
+#### Methods
 
-#### `log(name, parameters)`
+##### `configure()`
+
+##### `log(name, parameters)`
   - `name` (String)
   - `parameters` (Dictionary)
   
-#### `setUserPropertyString(parameters)`
+##### `setUserPropertyString(parameters)`
   - `parameters` (Dictionary)
     - `value` (String)
     - `name` (String)
-  
-#### `setUserID(userID)`
-- `userID` (String)
 
-#### `setScreenNameAndScreenClass(parameters)`
+##### `setScreenNameAndScreenClass(parameters)`
   - `parameters` (Dictionary)
     - `screenName` (String)
     - `screenClass` (String)
 
-## Properties
+#### Properties
 
-#### `appInstanceID` (String)
+##### `appInstanceID` (String, get)
+
+##### `userID` (String, set)
+
+##### `enabled` (Boolean, set)
 
 ## Example
 ```js
@@ -52,13 +55,16 @@ FirebaseAnalytics.setUserPropertyString({
 });
 
 // Set User-ID
-FirebaseAnalytics.setUserID('MyUserID');
+FirebaseAnalytics.userID = 'MyUserID';
 
 // Set screen-name  and screen-class
 FirebaseAnalytics.setScreenNameAndScreenClass({
   screenName: 'ScreenName',
   screenClass: 'ScreenClass'
 });
+
+// Toogle analytics on/off (default: on / true)
+FirebaseAnalytics.enabled = false;
 ```
 
 ## Build
