@@ -29,12 +29,12 @@
 		AA747D9F0F9514B9006C5449 /* FirebaseAnalytics_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* FirebaseAnalytics_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		DB073CC11F94013100E2F9D5 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBE1F94008500E2F9D5 /* FirebaseAnalytics.framework */; };
-		DB073CC21F94013100E2F9D5 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBC1F94008500E2F9D5 /* FirebaseCore.framework */; };
-		DB073CC31F94013100E2F9D5 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBF1F94008500E2F9D5 /* FirebaseCoreDiagnostics.framework */; };
-		DB073CC41F94013100E2F9D5 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBA1F94008500E2F9D5 /* FirebaseInstanceID.framework */; };
-		DB073CC51F94013100E2F9D5 /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CC01F94008500E2F9D5 /* FirebaseNanoPB.framework */; };
-		DB073CC61F94013100E2F9D5 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBB1F94008500E2F9D5 /* GoogleToolboxForMac.framework */; };
-		DB073CC71F94013100E2F9D5 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB073CBD1F94008500E2F9D5 /* nanopb.framework */; };
+		DB15C7841F976F7A0054FD3A /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C77E1F976F7A0054FD3A /* FirebaseCore.framework */; };
+		DB15C7851F976F7A0054FD3A /* FirebaseNanoPB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C77F1F976F7A0054FD3A /* FirebaseNanoPB.framework */; };
+		DB15C7861F976F7A0054FD3A /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C7801F976F7A0054FD3A /* GoogleToolboxForMac.framework */; };
+		DB15C7871F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C7811F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework */; };
+		DB15C7881F976F7A0054FD3A /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C7821F976F7A0054FD3A /* nanopb.framework */; };
+		DB15C7891F976F7A0054FD3A /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB15C7831F976F7A0054FD3A /* FirebaseInstanceID.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,13 +56,13 @@
 		AA747D9E0F9514B9006C5449 /* FirebaseAnalytics_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseAnalytics_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libfirebase.analytics.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfirebase.analytics.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB073CBA1F94008500E2F9D5 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = platform/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		DB073CBB1F94008500E2F9D5 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = platform/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
-		DB073CBC1F94008500E2F9D5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = platform/FirebaseCore.framework; sourceTree = "<group>"; };
-		DB073CBD1F94008500E2F9D5 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = platform/nanopb.framework; sourceTree = "<group>"; };
 		DB073CBE1F94008500E2F9D5 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = platform/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		DB073CBF1F94008500E2F9D5 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = platform/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
-		DB073CC01F94008500E2F9D5 /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = platform/FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		DB15C77E1F976F7A0054FD3A /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = shared/FirebaseCore.framework; sourceTree = "<group>"; };
+		DB15C77F1F976F7A0054FD3A /* FirebaseNanoPB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseNanoPB.framework; path = shared/FirebaseNanoPB.framework; sourceTree = "<group>"; };
+		DB15C7801F976F7A0054FD3A /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = shared/GoogleToolboxForMac.framework; sourceTree = "<group>"; };
+		DB15C7811F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = shared/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		DB15C7821F976F7A0054FD3A /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = shared/nanopb.framework; sourceTree = "<group>"; };
+		DB15C7831F976F7A0054FD3A /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = shared/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +72,12 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				DB073CC11F94013100E2F9D5 /* FirebaseAnalytics.framework in Frameworks */,
-				DB073CC21F94013100E2F9D5 /* FirebaseCore.framework in Frameworks */,
-				DB073CC31F94013100E2F9D5 /* FirebaseCoreDiagnostics.framework in Frameworks */,
-				DB073CC41F94013100E2F9D5 /* FirebaseInstanceID.framework in Frameworks */,
-				DB073CC51F94013100E2F9D5 /* FirebaseNanoPB.framework in Frameworks */,
-				DB073CC61F94013100E2F9D5 /* GoogleToolboxForMac.framework in Frameworks */,
-				DB073CC71F94013100E2F9D5 /* nanopb.framework in Frameworks */,
+				DB15C7841F976F7A0054FD3A /* FirebaseCore.framework in Frameworks */,
+				DB15C7891F976F7A0054FD3A /* FirebaseInstanceID.framework in Frameworks */,
+				DB15C7881F976F7A0054FD3A /* nanopb.framework in Frameworks */,
+				DB15C7871F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				DB15C7851F976F7A0054FD3A /* FirebaseNanoPB.framework in Frameworks */,
+				DB15C7861F976F7A0054FD3A /* GoogleToolboxForMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,12 +107,12 @@
 			isa = PBXGroup;
 			children = (
 				DB073CBE1F94008500E2F9D5 /* FirebaseAnalytics.framework */,
-				DB073CBC1F94008500E2F9D5 /* FirebaseCore.framework */,
-				DB073CBF1F94008500E2F9D5 /* FirebaseCoreDiagnostics.framework */,
-				DB073CBA1F94008500E2F9D5 /* FirebaseInstanceID.framework */,
-				DB073CC01F94008500E2F9D5 /* FirebaseNanoPB.framework */,
-				DB073CBB1F94008500E2F9D5 /* GoogleToolboxForMac.framework */,
-				DB073CBD1F94008500E2F9D5 /* nanopb.framework */,
+				DB15C77E1F976F7A0054FD3A /* FirebaseCore.framework */,
+				DB15C7811F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework */,
+				DB15C7831F976F7A0054FD3A /* FirebaseInstanceID.framework */,
+				DB15C77F1F976F7A0054FD3A /* FirebaseNanoPB.framework */,
+				DB15C7801F976F7A0054FD3A /* GoogleToolboxForMac.framework */,
+				DB15C7821F976F7A0054FD3A /* nanopb.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -250,6 +250,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/platform",
+					"$(PROJECT_DIR)/shared",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -296,6 +297,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/platform",
+					"$(PROJECT_DIR)/shared",
 				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;

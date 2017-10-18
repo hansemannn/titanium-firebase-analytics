@@ -10,8 +10,6 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 
 #### Methods
 
-##### `configure()`
-
 ##### `log(name, parameters)`
   - `name` (String)
   - `parameters` (Dictionary)
@@ -36,11 +34,14 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 
 ## Example
 ```js
+// Require the Firebase Core module (own project!)
+var FirebaseCore = require('firebase.core');
+
 // Require the Firebase Analytics module
 var FirebaseAnalytics = require('firebase.analytics');
 
-// Configure FirebaseAnalytics
-FirebaseAnalytics.configure();
+// Configure Firebase
+FirebaseCore.configure();
 
 // Get the App Instance ID
 Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
@@ -69,7 +70,7 @@ FirebaseAnalytics.enabled = false;
 
 ## Build
 ```js
-cd iphone
+cd ios
 appc ti build -p ios --build-only
 ```
 
