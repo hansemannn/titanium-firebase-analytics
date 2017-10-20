@@ -19,18 +19,18 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
     - `value` (String)
     - `name` (String)
 
-##### `setScreenNameAndScreenClass(parameters)`
+##### `setScreenNameAndScreenClass(parameters)` (iOS-only)
   - `parameters` (Dictionary)
     - `screenName` (String)
     - `screenClass` (String)
 
 #### Properties
 
-##### `appInstanceID` (String, get)
+##### `appInstanceID` (String, get, iOS-only)
 
-##### `userID` (String, set)
+##### `userID` (String, set, iOS-only)
 
-##### `enabled` (Boolean, set)
+##### `enabled` (Boolean, set, iOS-only)
 
 ## Example
 ```js
