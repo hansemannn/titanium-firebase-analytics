@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 3
+architectures: armeabi-v7a x86
+description: titanium-firebase-analytics
+author: Hans Knoechel
+license: Apache 2
+copyright: Copyright (c) 2017 by Axway Appcelerator
+
+# these should not be edited
+name: titanium-firebase-analytics
+moduleid: firebase.analytics
+guid: a1f48874-bd3a-4378-b623-79012aad1d20
+platform: android
+minsdk: 6.2.2.GA
