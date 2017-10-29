@@ -63,6 +63,7 @@
 		DB15C7811F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = shared/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
 		DB15C7821F976F7A0054FD3A /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = shared/nanopb.framework; sourceTree = "<group>"; };
 		DB15C7831F976F7A0054FD3A /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = shared/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		DBA71B1B1FA65DCD0052B413 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +107,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBA71B1B1FA65DCD0052B413 /* AdSupport.framework */,
 				DB073CBE1F94008500E2F9D5 /* FirebaseAnalytics.framework */,
 				DB15C77E1F976F7A0054FD3A /* FirebaseCore.framework */,
 				DB15C7811F976F7A0054FD3A /* FirebaseCoreDiagnostics.framework */,

@@ -1,1 +1,1 @@
-// UNUSED
+OTHER_LDFLAGS = $(inherited) -framework AdSupport
