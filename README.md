@@ -4,6 +4,15 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 ## Requirements
 - [x] Titanium SDK 6.2.0 or later
 
+## Android Note
+
+When being using used together with other modules that use the Google Play Services (e.g. Ti.Map or Ti.Admob)
+you have to use at least Titanium SDK 7.0.0 for Android which resolved duplicate dependencies for you. 
+
+Latest module versions that support 7.0.0 and have Ti.PlayServices included:
+  - [Ti.Map 4.0.0](https://github.com/appcelerator-modules/ti.map/releases/tag/android-4.0.0)
+  - [Ti.Admob 4.0.0](https://github.com/appcelerator-modules/ti.admob/releases/tag/android-4.0.0)
+
 ## Download
 - [x] [Stable release](https://github.com/hansemannn/titanium-firebase-analytics/releases)
 - [x] [![gitTio](http://hans-knoechel.de/shields/shield-gittio.svg)](http://gitt.io/component/firebase.analytics)
