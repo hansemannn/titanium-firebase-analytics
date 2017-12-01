@@ -10,7 +10,7 @@ Please make sure to check the Android-specific notes in the [main project](https
 
 ## Download
 - [x] [Stable release](https://github.com/hansemannn/titanium-firebase-analytics/releases)
-- [x] [![gitTio](http://hans-knoechel.de/shields/shield-gittio.svg?refresh)](http://gitt.io/component/firebase.analytics)
+- [x] [![gitTio](http://hans-knoechel.de/shields/shield-gittio.svg?v2)](http://gitt.io/component/firebase.analytics)
 
 ## API's
 
