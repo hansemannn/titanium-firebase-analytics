@@ -12,7 +12,7 @@ FirebaseAnalytics.log('My Event', { /* Optional arguments */ });
 
 // Set user-property string
 FirebaseAnalytics.setUserPropertyString({
-	name: 'My Name'
+	name: 'My Name',
 	value: 'My Value'
 });
 
