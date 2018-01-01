@@ -27,37 +27,45 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 {
 	private static final String LCAT = "TitaniumFirebaseAnalyticsModule";
 	private static final boolean DBG = TiConfig.LOGD;
+  private static FirebaseAnalytics mFirebaseAnalytics;
 
 	public TitaniumFirebaseAnalyticsModule()
 	{
 		super();
 	}
 
+  @Kroll.onAppCreate
+  public static void onAppCreate(TiApplication app)
+  {
+    mFirebaseAnalytics = FirebaseAnalytics.getInstance(TiApplication.getAppRootOrCurrentActivity());
+  }
+
   @Kroll.method
   public void log(String name, KrollDict parameters)
   {
     Bundle bundle = new Bundle();
-    
+
     // TODO: Loop through all keys and set accordingly
     if (parameters.containsKey(Param.ACHIEVEMENT_ID)) {
       bundle.putString(Param.ACHIEVEMENT_ID, TiConvert.toString(parameters, Param.ACHIEVEMENT_ID));
     }
 
-    FirebaseAnalytics.getInstance(TiApplication.getInstance().getApplicationContext()).
-                       logEvent(name, bundle);
+    mFirebaseAnalytics.logEvent(name, bundle);
   }
-  
+
   @Kroll.method @Kroll.setProperty
   public void setUserPropertyString(KrollDict parameters)
   {
-    FirebaseAnalytics.getInstance(TiApplication.getInstance().getApplicationContext()).
-        setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
+    mFirebaseAnalytics.setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
   }
-  
+
   @Kroll.method @Kroll.setProperty
   public void setScreenNameAndScreenClass(KrollDict parameters)
   {
-    Log.e(LCAT, "Firebase.setScreenNameAndScreenClass() is not implemented on Android, yet!");
+    if (parameters.containsKey("screenName")) {
+      mFirebaseAnalytics.setCurrentScreen(TiApplication.getAppRootOrCurrentActivity(), TiConvert.toString(parameters, "screenName"), null);
+    } else {
+      Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
+    }
   }
 }
-

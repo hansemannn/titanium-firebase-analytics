@@ -27,10 +27,10 @@ Please make sure to check the Android-specific notes in the [main project](https
     - `value` (String)
     - `name` (String)
 
-##### `setScreenNameAndScreenClass(parameters)` (iOS-only)
+##### `setScreenNameAndScreenClass(parameters)`
   - `parameters` (Dictionary)
     - `screenName` (String)
-    - `screenClass` (String)
+    - `screenClass` (String, iOS only)
 
 #### Properties
 
