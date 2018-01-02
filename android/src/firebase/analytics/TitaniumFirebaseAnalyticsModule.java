@@ -33,11 +33,14 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	{
 		super();
 	}
-
-  @Kroll.onAppCreate
-  public static void onAppCreate(TiApplication app)
+  
+  private FirebaseAnalytics analyticsInstance()
   {
-    mFirebaseAnalytics = FirebaseAnalytics.getInstance(TiApplication.getAppRootOrCurrentActivity());
+    if (this.mFirebaseAnalytics == null) {
+      this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity().getApplicationContext());
+    }
+    
+    return this.mFirebaseAnalytics;
   }
 
   @Kroll.method
@@ -50,20 +53,20 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
       bundle.putString(Param.ACHIEVEMENT_ID, TiConvert.toString(parameters, Param.ACHIEVEMENT_ID));
     }
 
-    mFirebaseAnalytics.logEvent(name, bundle);
+    this.analyticsInstance().logEvent(name, bundle);
   }
 
   @Kroll.method @Kroll.setProperty
   public void setUserPropertyString(KrollDict parameters)
   {
-    mFirebaseAnalytics.setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
+    this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
   }
 
   @Kroll.method @Kroll.setProperty
   public void setScreenNameAndScreenClass(KrollDict parameters)
   {
     if (parameters.containsKey("screenName")) {
-      mFirebaseAnalytics.setCurrentScreen(TiApplication.getAppRootOrCurrentActivity(), TiConvert.toString(parameters, "screenName"), null);
+      this.analyticsInstance().setCurrentScreen(getActivity(), TiConvert.toString(parameters, "screenName"), null);
     } else {
       Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
     }
