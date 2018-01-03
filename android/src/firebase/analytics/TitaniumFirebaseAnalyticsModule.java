@@ -8,19 +8,24 @@
  */
 package firebase.analytics;
 
-import org.appcelerator.kroll.KrollDict;
-import org.appcelerator.kroll.KrollModule;
+import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
-import org.appcelerator.kroll.annotations.Kroll;
+import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollModule;
 
+import org.appcelerator.titanium.io.TiBaseFile;
 import org.appcelerator.titanium.TiApplication;
+import org.appcelerator.titanium.TiBlob;
 import org.appcelerator.titanium.util.TiConvert;
 
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.analytics.FirebaseAnalytics.Param;
+
+import java.io.IOException;
+import java.util.Map;
 
 @Kroll.module(name="TitaniumFirebaseAnalytics", id="firebase.analytics")
 public class TitaniumFirebaseAnalyticsModule extends KrollModule
@@ -34,6 +39,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		super();
 	}
   
+  // TODO: Eventually find a proper place to initialize it so we don't need a lazy initializer
   private FirebaseAnalytics analyticsInstance()
   {
     if (this.mFirebaseAnalytics == null) {
@@ -46,14 +52,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   @Kroll.method
   public void log(String name, KrollDict parameters)
   {
-    Bundle bundle = new Bundle();
-
-    // TODO: Loop through all keys and set accordingly
-    if (parameters.containsKey(Param.ACHIEVEMENT_ID)) {
-      bundle.putString(Param.ACHIEVEMENT_ID, TiConvert.toString(parameters, Param.ACHIEVEMENT_ID));
-    }
-
-    this.analyticsInstance().logEvent(name, bundle);
+    this.analyticsInstance().logEvent(name, this.mapToBundle(parameters));
   }
 
   @Kroll.method @Kroll.setProperty
@@ -70,5 +69,30 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
     } else {
       Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
     }
+  }
+  
+  private static Bundle mapToBundle(Map<String, Object> map)
+  {
+    if (map == null) return new Bundle();
+    Bundle bundle = new Bundle(map.size());
+    
+    for (String key : map.keySet()) {
+      Object val = map.get(key);
+      if (val == null) {
+        bundle.putString(key, null);
+      } else if (val instanceof TiBlob) {
+        bundle.putByteArray(key, ((TiBlob)val).getBytes());
+      } else if (val instanceof TiBaseFile) {
+        try {
+          bundle.putByteArray(key, ((TiBaseFile)val).read().getBytes());
+        } catch (IOException e) {
+          Log.e("FacebookModule-Util", "Unable to put '" + key + "' value into bundle: " + e.getLocalizedMessage(), e);
+        }
+      } else {
+        bundle.putString(key, TiConvert.toString(val));
+      }
+    }
+    
+    return bundle;
   }
 }
