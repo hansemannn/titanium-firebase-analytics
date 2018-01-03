@@ -4,9 +4,54 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 ## Requirements
 - [x] Titanium SDK 6.2.0 or later
 
-## Android Notes
+## Installation
 
-Please make sure to check the Android-specific notes in the [main project](https://github.com/hansemannn/titanium-firebase/blob/master/README.md#️-android-note).
+In general, make sure to follow the general instructions described in the [main project](https://github.com/hansemannn/titanium-firebase/blob/master/README.md#️-android-note).
+
+### iOS
+
+No additional setup required for Firebase Analytics on iOS.
+
+## Android
+
+There are a few additional requirements for Firebase Analytics on Android:
+
+1. Copy the following code under the `<application>` tag of your tiapp.xml. Please note to replace 
+all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in your tiapp.xml):
+
+```xml
+<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false"/>	
+
+<receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true">
+   <intent-filter>
+      <action android:name="com.google.android.gms.measurement.UPLOAD" />
+   </intent-filter>
+</receiver>  
+
+<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
+   <intent-filter>
+      <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+   </intent-filter>
+</service>
+
+<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
+   <intent-filter>
+      <action android:name="com.google.android.c2dm.intent.SEND" />
+   </intent-filter>
+</service>
+
+<service android:name="MY_PACKAGE_NAME.gcm.GcmIDListenerService" android:exported="false">
+   <intent-filter>
+      <action android:name="com.google.android.gms.iid.InstanceID" />
+   </intent-filter>
+</service>
+
+ <service android:name="MY_PACKAGE_NAME.gcm.RegistrationIntentService" android:exported="false"/>
+```
+
+2. Copy the `<string name="google_app_id">YOUR_FIREBASE_APPLICATION_ID</string>` key to the `strings.xml` that is located:
+ - Alloy: `<project-dir>/app/platform/android/res/values/strings.xml`
+ - Classic: `<project-dir>/platform/android/res/values/strings.xml`
 
 ## Download
 - [x] [Stable release](https://github.com/hansemannn/titanium-firebase-analytics/releases)
