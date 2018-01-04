@@ -23,7 +23,7 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 ```xml
 <service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />	
 
-<service android:name="com.google.android.gms.measurement.AppMeasurementJobService"    android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
 
 <service android:name="MY_PACKAGE_NAME.gcm.RegistrationIntentService" android:exported="false" />
 
