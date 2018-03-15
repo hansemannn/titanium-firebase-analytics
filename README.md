@@ -103,11 +103,11 @@ FirebaseCore.configure();
 Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
 
 // Log to the Firebase console
-FirebaseAnalytics.log('My Event', { /* Optional arguments */ });
+FirebaseAnalytics.log('My_Event', { /* Optional arguments */ });
 
 // Set user-property string
 FirebaseAnalytics.setUserPropertyString({
-  name: 'My Name',
+  name: 'My_Name',
   value: 'My Value'
 });
 
