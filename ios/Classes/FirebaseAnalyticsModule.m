@@ -51,10 +51,11 @@
 
 - (void)log:(id)arguments
 {
-  ENSURE_ARG_COUNT(arguments, 2);
+  NSString *name = nil;
+  NSDictionary *parameters = nil;
 
-  NSString *name = [arguments objectAtIndex:0];
-  NSDictionary *parameters = [arguments objectAtIndex:1];
+  ENSURE_ARG_AT_INDEX(name, arguments, 0, NSString);
+  ENSURE_ARG_OR_NIL_AT_INDEX(parameters, arguments, 1, NSDictionary);
 
   [FIRAnalytics logEventWithName:name
                       parameters:parameters];
