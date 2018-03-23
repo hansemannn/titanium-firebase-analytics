@@ -59,10 +59,10 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 ```
 
 2. Create a file `strings.xml` that is located at:
- - Alloy: `<project-dir>/app/platform/android/res/values/strings.xml`
- - Classic: `<project-dir>/platform/android/res/values/strings.xml`
+   - Alloy: `<project-dir>/app/platform/android/res/values/strings.xml`
+   - Classic: `<project-dir>/platform/android/res/values/strings.xml`
  
- with your Firebase Application ID (mobilesdk_app_id from the JSON file) content:
+   with your Firebase Application ID (mobilesdk_app_id from the JSON file) content:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
