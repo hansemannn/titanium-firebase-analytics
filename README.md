@@ -21,40 +21,54 @@ There are a few additional requirements for Firebase Analytics on Android:
 all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in your tiapp.xml):
 
 ```xml
-<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />	
+<android xmlns:android="http://schemas.android.com/apk/res/android">
+	<manifest>
+		<application>
+			<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />	
 
-<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
+			<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
 
-<service android:name="MY_PACKAGE_NAME.gcm.RegistrationIntentService" android:exported="false" />
+			<service android:name="MY_PACKAGE_NAME.gcm.RegistrationIntentService" android:exported="false" />
 
-<receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true">
-   <intent-filter>
-      <action android:name="com.google.android.gms.measurement.UPLOAD" />
-   </intent-filter>
-</receiver>  
+			<receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true">
+			   <intent-filter>
+				  <action android:name="com.google.android.gms.measurement.UPLOAD" />
+			   </intent-filter>
+			</receiver>  
 
-<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
-   <intent-filter>
-      <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-   </intent-filter>
-</service>
+			<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
+			   <intent-filter>
+				  <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+			   </intent-filter>
+			</service>
 
-<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
-   <intent-filter>
-      <action android:name="com.google.android.c2dm.intent.SEND" />
-   </intent-filter>
-</service>
+			<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
+			   <intent-filter>
+				  <action android:name="com.google.android.c2dm.intent.SEND" />
+			   </intent-filter>
+			</service>
 
-<service android:name="MY_PACKAGE_NAME.gcm.GcmIDListenerService" android:exported="false">
-   <intent-filter>
-      <action android:name="com.google.android.gms.iid.InstanceID" />
-   </intent-filter>
-</service>
+			<service android:name="MY_PACKAGE_NAME.gcm.GcmIDListenerService" android:exported="false">
+			   <intent-filter>
+				  <action android:name="com.google.android.gms.iid.InstanceID" />
+			   </intent-filter>
+			</service>
+		</application>
+	</manifest>
+</android>   
 ```
 
-2. Copy the `<string name="google_app_id">YOUR_FIREBASE_APPLICATION_ID</string>` key to the `strings.xml` that is located:
+2. Create a file `strings.xml` that is located at:
  - Alloy: `<project-dir>/app/platform/android/res/values/strings.xml`
  - Classic: `<project-dir>/platform/android/res/values/strings.xml`
+ 
+ with your Firebase Application ID (mobilesdk_app_id from the JSON file) content:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="google_app_id">YOUR_FIREBASE_APPLICATION_ID</string>
+</resources>
+```
 
 ## Download
 - [x] [Stable release](https://github.com/hansemannn/titanium-firebase-analytics/releases)
