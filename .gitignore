@@ -30,3 +30,4 @@ android/launch-*
 nbproject
 /metadata.json
 ios/firebase.analytics-iphone-*.zip
+/ios/dist

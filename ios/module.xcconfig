@@ -1,1 +1,1 @@
-OTHER_LDFLAGS = $(inherited) -framework AdSupport
+OTHER_LDFLAGS = $(inherited) -framework AdSupport -framework Security -framework StoreKit -framework SystemConfiguration
