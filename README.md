@@ -12,11 +12,6 @@ Use the `enabled` property to enable or disable Analytics and `resetAnalyticsDat
 
 In general, make sure to follow the general instructions described in the [main project](https://github.com/hansemannn/titanium-firebase/blob/master/README.md#️-android-note).
 
-## Update SDK's
-
-Android: Using Gradle command `gradle getDeps`
-iOS: Downloading the [latest framework](https://firebase.google.com/download/ios)
-
 ### iOS
 
 No additional setup required for Firebase Analytics on iOS.
@@ -172,13 +167,18 @@ FirebaseAnalytics.setScreenNameAndScreenClass({
 FirebaseAnalytics.enabled = false;
 ```
 
+## Update SDK's
+
+- [x] Android: Using Gradle command `gradle getDeps`
+- [x] iOS: Downloading the [latest framework](https://firebase.google.com/download/ios)
+
 ## Build
+
 ```js
 cd ios
-appc ti build -p ios --build-only
+appc run -p [ios|android] --build-only
 ```
 
 ## Legal
 
-This module is Copyright (c) 2017-Present by Appcelerator, Inc. All Rights Reserved. 
-Usage of this module is subject to the Terms of Service agreement with Appcelerator, Inc.  
+This module is Copyright (c) 2017-Present by Hans Knöchel. All Rights Reserved. 
