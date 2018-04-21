@@ -82,6 +82,11 @@
   [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[TiUtils boolValue:enabled]];
 }
 
+- (void)resetAnalyticsData:(id)unused
+{
+  [FIRAnalytics resetAnalyticsData];
+}
+
 - (void)setScreenNameAndScreenClass:(id)arguments
 {
   ENSURE_SINGLE_ARG(arguments, NSDictionary);

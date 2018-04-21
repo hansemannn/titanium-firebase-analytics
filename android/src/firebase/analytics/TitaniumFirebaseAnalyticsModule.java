@@ -30,29 +30,35 @@ import java.util.Map;
 @Kroll.module(name="TitaniumFirebaseAnalytics", id="firebase.analytics")
 public class TitaniumFirebaseAnalyticsModule extends KrollModule
 {
-	private static final String LCAT = "TitaniumFirebaseAnalyticsModule";
-	private static final boolean DBG = TiConfig.LOGD;
+  private static final String LCAT = "TitaniumFirebaseAnalyticsModule";
+  private static final boolean DBG = TiConfig.LOGD;
   private static FirebaseAnalytics mFirebaseAnalytics;
 
-	public TitaniumFirebaseAnalyticsModule()
-	{
-		super();
-	}
-  
-  // TODO: Eventually find a proper place to initialize it so we don't need a lazy initializer
   private FirebaseAnalytics analyticsInstance()
   {
-    if (this.mFirebaseAnalytics == null) {
-      this.mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity().getApplicationContext());
+    if (mFirebaseAnalytics == null) {
+      mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity().getApplicationContext());
     }
     
-    return this.mFirebaseAnalytics;
+    return mFirebaseAnalytics;
   }
 
   @Kroll.method
-  public void log(String name, KrollDict parameters)
+  public void log(String name, @Kroll.argument(optional = true) KrollDict parameters)
   {
     this.analyticsInstance().logEvent(name, this.mapToBundle(parameters));
+  }
+
+  @Kroll.method
+  public void resetAnalyticsData()
+  {
+    this.analyticsInstance().resetAnalyticsData();
+  }
+
+  @Kroll.method @Kroll.setProperty
+  public void setEnabled(Boolean enabled)
+  {
+    this.analyticsInstance().setAnalyticsCollectionEnabled(enabled);
   }
 
   @Kroll.method @Kroll.setProperty
@@ -70,12 +76,13 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
       Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
     }
   }
-  
+
   private static Bundle mapToBundle(Map<String, Object> map)
   {
-    if (map == null) return new Bundle();
+    if (map == null || map.size() == 0) return null;
+
     Bundle bundle = new Bundle(map.size());
-    
+
     for (String key : map.keySet()) {
       Object val = map.get(key);
       if (val == null) {
@@ -86,13 +93,13 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
         try {
           bundle.putByteArray(key, ((TiBaseFile)val).read().getBytes());
         } catch (IOException e) {
-          Log.e("FacebookModule-Util", "Unable to put '" + key + "' value into bundle: " + e.getLocalizedMessage(), e);
+          Log.e("FirebaseAnalytics", "Unable to put '" + key + "' value into bundle: " + e.getLocalizedMessage(), e);
         }
       } else {
         bundle.putString(key, TiConvert.toString(val));
       }
     }
-    
+
     return bundle;
   }
 }

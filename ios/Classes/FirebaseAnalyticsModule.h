@@ -18,6 +18,10 @@
 
 - (void)setUserID:(NSString *)userID;
 
+- (void)setEnabled:(NSNumber *)enabled;
+
+- (void)resetAnalyticsData:(id)unused;
+
 - (void)setScreenNameAndScreenClass:(id)arguments;
 
 - (NSString *)appInstanceID;

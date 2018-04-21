@@ -1,6 +1,9 @@
 # Firebase Analytics - Titanium Module
 Use the native Firebase SDK in Axway Titanium. This repository is part of the [Titanium Firebase](https://github.com/hansemannn/titanium-firebase) project.
 
+⚠️ This module already comply to the EU General Data Protection Regulation ([GDPR](https://www.eugdpr.org/)) regulation already. 
+Use the `enabled` property to enable or disable Analytics and `resetAnalyticsData()` to make Cambridge Analytica angry 😙.
+
 ## Requirements
 - [x] iOS: Titanium SDK 6.2.0+
 - [x] Android: Titanium SDK 7.0.0+
@@ -8,6 +11,11 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 ## Installation
 
 In general, make sure to follow the general instructions described in the [main project](https://github.com/hansemannn/titanium-firebase/blob/master/README.md#️-android-note).
+
+## Update SDK's
+
+Android: Using Gradle command `gradle getDeps`
+iOS: Downloading the [latest framework](https://firebase.google.com/download/ios)
 
 ### iOS
 
@@ -82,25 +90,51 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 
 ##### `log(name, parameters)`
   - `name` (String)
-  - `parameters` (Dictionary)
+  - `parameters` (Dictionary, optional)
+  
+Logs an app event. The event can have up to 25 parameters. Events with the same name must 
+have the same parameters. Up to 500 event names are supported.
+  
+Make sure to check the [Log Events](https://firebase.google.com/docs/analytics/android/events) docs to validate
+  that you are using a valid event name (1st parameter) and parameter structure (2nd event).
   
 ##### `setUserPropertyString(parameters)`
   - `parameters` (Dictionary)
     - `value` (String)
     - `name` (String)
 
+Sets a user property to a given value. Up to 25 user property names are supported. Once set, user 
+property values persist throughout the app lifecycle and across sessions.
+
 ##### `setScreenNameAndScreenClass(parameters)`
   - `parameters` (Dictionary)
     - `screenName` (String)
     - `screenClass` (String, iOS only)
+    
+Sets the current screen name, which specifies the current visual context in your app. This helps identify 
+the areas in your app where users spend their time and how they interact with your app.
+
+
+##### `resetAnalyticsData()`
+
+Clears all analytics data for this app from the device and resets the app instance id.
 
 #### Properties
 
+##### `enabled` (Boolean, set)
+
+Sets whether analytics collection is enabled for this app on this device. This setting is persisted across 
+app sessions. By default it is enabled.
+
 ##### `appInstanceID` (String, get, iOS-only)
+
+Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize 
+actions (for example, sending an FCM message).
 
 ##### `userID` (String, set, iOS-only)
 
-##### `enabled` (Boolean, set, iOS-only)
+The user ID to ascribe to the user of this app on this device, which must be
+non-empty and no more than 256 characters long. Setting userID to nil removes the user ID.
 
 ## Example
 ```js
