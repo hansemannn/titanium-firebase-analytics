@@ -5,6 +5,7 @@ Use the native Firebase SDK in Axway Titanium. This repository is part of the [T
 Use the `enabled` property to enable or disable Analytics and `resetAnalyticsData()` to make Cambridge Analytica angry 😙.
 
 ## Requirements
+- [x] The [Firebase Core](https://github.com/hansemannn/titanium-firebase-core) module
 - [x] iOS: Titanium SDK 6.2.0+
 - [x] Android: Titanium SDK 7.0.0+
 
