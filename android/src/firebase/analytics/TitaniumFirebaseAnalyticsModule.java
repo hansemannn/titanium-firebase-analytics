@@ -39,7 +39,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
     if (mFirebaseAnalytics == null) {
       mFirebaseAnalytics = FirebaseAnalytics.getInstance(getActivity().getApplicationContext());
     }
-    
+
     return mFirebaseAnalytics;
   }
 
@@ -49,10 +49,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
     this.analyticsInstance().logEvent(name, this.mapToBundle(parameters));
   }
 
+  // it needs 11.6.0 version
   @Kroll.method
   public void resetAnalyticsData()
   {
-    this.analyticsInstance().resetAnalyticsData();
+    //this.analyticsInstance().resetAnalyticsData();
+    Log.e("FirebaseAnalytics","Sorry, resetAnalyticsData() requires /lib version > 11.6.0, but we still use 11.0.4 :'(");
   }
 
   @Kroll.method @Kroll.setProperty
