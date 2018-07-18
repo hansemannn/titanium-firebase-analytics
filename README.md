@@ -1,7 +1,7 @@
 # Firebase Analytics - Titanium Module
 Use the native Firebase SDK in Axway Titanium. This repository is part of the [Titanium Firebase](https://github.com/hansemannn/titanium-firebase) project.
 
-⚠️ This module already comply to the EU General Data Protection Regulation ([GDPR](https://www.eugdpr.org/)) regulation already. 
+⚠️ This module already comply to the EU General Data Protection Regulation ([GDPR](https://www.eugdpr.org/)) regulation already.
 Use the `enabled` property to enable or disable Analytics and `resetAnalyticsData()` to make Cambridge Analytica angry 😙.
 
 ## Requirements
@@ -21,14 +21,14 @@ No additional setup required for Firebase Analytics on iOS.
 
 There are a few additional requirements for Firebase Analytics on Android:
 
-1. Copy the following code under the `<application>` tag of your tiapp.xml. Please note to replace 
+1. Copy the following code under the `<application>` tag of your tiapp.xml. Please note to replace
 all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in your tiapp.xml):
 
 ```xml
 <android xmlns:android="http://schemas.android.com/apk/res/android">
 	<manifest>
 		<application>
-			<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />	
+			<service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false" />
 
 			<service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE" android:enabled="true" android:exported="false" />
 
@@ -65,7 +65,7 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 2. Create a file `strings.xml` that is located at:
    - Alloy: `<project-dir>/app/platform/android/res/values/strings.xml`
    - Classic: `<project-dir>/platform/android/res/values/strings.xml`
- 
+
    with your Firebase Application ID (mobilesdk_app_id from the JSON file) content:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -87,31 +87,31 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 ##### `log(name, parameters)`
   - `name` (String)
   - `parameters` (Dictionary, optional)
-  
-Logs an app event. The event can have up to 25 parameters. Events with the same name must 
+
+Logs an app event. The event can have up to 25 parameters. Events with the same name must
 have the same parameters. Up to 500 event names are supported.
-  
+
 Make sure to check the [Log Events](https://firebase.google.com/docs/analytics/android/events) docs to validate
   that you are using a valid event name (1st parameter) and parameter structure (2nd event).
-  
+
 ##### `setUserPropertyString(parameters)`
   - `parameters` (Dictionary)
     - `value` (String)
     - `name` (String)
 
-Sets a user property to a given value. Up to 25 user property names are supported. Once set, user 
+Sets a user property to a given value. Up to 25 user property names are supported. Once set, user
 property values persist throughout the app lifecycle and across sessions.
 
 ##### `setScreenNameAndScreenClass(parameters)`
   - `parameters` (Dictionary)
     - `screenName` (String)
     - `screenClass` (String, iOS only)
-    
-Sets the current screen name, which specifies the current visual context in your app. This helps identify 
+
+Sets the current screen name, which specifies the current visual context in your app. This helps identify
 the areas in your app where users spend their time and how they interact with your app.
 
 
-##### `resetAnalyticsData()`
+##### `resetAnalyticsData()` (iOS-only, on  Android requires /lib version > 11.6.0)
 
 Clears all analytics data for this app from the device and resets the app instance id.
 
@@ -119,12 +119,12 @@ Clears all analytics data for this app from the device and resets the app instan
 
 ##### `enabled` (Boolean, set)
 
-Sets whether analytics collection is enabled for this app on this device. This setting is persisted across 
+Sets whether analytics collection is enabled for this app on this device. This setting is persisted across
 app sessions. By default it is enabled.
 
 ##### `appInstanceID` (String, get, iOS-only)
 
-Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize 
+Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize
 actions (for example, sending an FCM message).
 
 ##### `userID` (String, set, iOS-only)
@@ -182,4 +182,4 @@ appc run -p [ios|android] --build-only
 
 ## Legal
 
-This module is Copyright (c) 2017-Present by Hans Knöchel. All Rights Reserved. 
+This module is Copyright (c) 2017-Present by Hans Knöchel. All Rights Reserved.
