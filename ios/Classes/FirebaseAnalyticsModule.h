@@ -1,16 +1,13 @@
 /**
  * titanium-firebase-analytics
  *
- * Created by Hans Knoechel
- * Copyright (c) 2017 Your Company. All rights reserved.
+ * Created by Hans Knöchel
+ * Copyright (c) 2017-present Hans Knöchel. All rights reserved.
  */
 
 #import "TiModule.h"
 
-@interface FirebaseAnalyticsModule : TiModule {
-}
-
-- (void)configure:(id)arguments;
+@interface FirebaseAnalyticsModule : TiModule
 
 - (void)log:(id)arguments;
 

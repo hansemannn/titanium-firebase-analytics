@@ -1,8 +1,8 @@
 /**
  * titanium-firebase-analytics
  *
- * Created by Hans Knoechel
- * Copyright (c) 2017 Your Company. All rights reserved.
+ * Created by Hans Knöchel
+ * Copyright (c) 2017-present Hans Knöchel. All rights reserved.
  */
 
 #import "FirebaseAnalyticsModule.h"
@@ -36,18 +36,6 @@
 }
 
 #pragma Public APIs
-
-- (void)configure:(id)arguments
-{
-  if (!arguments || [arguments count] == 0) {
-    [FIRApp configure];
-    return;
-  }
-
-  // TODO: Expose options
-  __unused NSDictionary *options = [arguments objectAtIndex:0];
-  [FIRApp configureWithOptions:FIROptions.defaultOptions];
-}
 
 - (void)log:(id)arguments
 {
