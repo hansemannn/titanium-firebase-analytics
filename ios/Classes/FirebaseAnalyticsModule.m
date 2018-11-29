@@ -79,8 +79,8 @@
 {
   ENSURE_SINGLE_ARG(arguments, NSDictionary);
 
-  NSString *screenName = [arguments objectForKey:@"screenName"];
-  NSString *screenClass = [arguments objectForKey:@"screenClass"];
+  NSString *screenName = [TiUtils stringValue:@"screenName" properties:arguments];
+  NSString *screenClass = [TiUtils stringValue:@"screenClass" properties:arguments def:@"TiController"];
 
   [FIRAnalytics setScreenName:screenName
                   screenClass:screenClass];

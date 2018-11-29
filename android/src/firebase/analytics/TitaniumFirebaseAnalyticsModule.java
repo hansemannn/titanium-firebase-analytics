@@ -76,8 +76,8 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
       return;
     }
 
-    String screenName = TiConvert.toString(parameters, "screenName");
-    String screenClass = TiConvert.toString(parameters, "screenClass", "TiController");
+    String screenName = parameters.getString("screenName");
+    String screenClass = parameters.optString("screenClass", "TiController");
     
     this.analyticsInstance().setCurrentScreen(getActivity(), screenName, screenClass);
   }

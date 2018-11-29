@@ -106,7 +106,7 @@ property values persist throughout the app lifecycle and across sessions.
 ##### `setScreenNameAndScreenClass(parameters)`
   - `parameters` (Dictionary)
     - `screenName` (String)
-    - `screenClass` (String, iOS only)
+    - `screenClass` (String, defaults to `TiController`)
 
 Sets the current screen name, which specifies the current visual context in your app. This helps identify
 the areas in your app where users spend their time and how they interact with your app.
