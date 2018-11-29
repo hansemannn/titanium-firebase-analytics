@@ -71,11 +71,15 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   @Kroll.method @Kroll.setProperty
   public void setScreenNameAndScreenClass(KrollDict parameters)
   {
-    if (parameters.containsKey("screenName")) {
-      this.analyticsInstance().setCurrentScreen(getActivity(), TiConvert.toString(parameters, "screenName"), null);
-    } else {
-      Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
+    if (!parameters.containsKey("screenName")) {
+      Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key"); 
+      return;
     }
+
+    String screenName = TiConvert.toString(parameters, "screenName");
+    String screenClass = TiConvert.toString(parameters, "screenClass", "TiController");
+    
+    this.analyticsInstance().setCurrentScreen(getActivity(), screenName, screenClass);
   }
 
   private static Bundle mapToBundle(Map<String, Object> map)
