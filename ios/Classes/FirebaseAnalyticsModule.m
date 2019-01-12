@@ -88,7 +88,7 @@
 
 - (NSString *)appInstanceID
 {
-  [FIRAnalytics appInstanceID];
+  return [FIRAnalytics appInstanceID];
 }
 
 @end
