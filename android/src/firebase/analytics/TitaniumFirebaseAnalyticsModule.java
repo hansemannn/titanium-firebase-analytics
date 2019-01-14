@@ -69,7 +69,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   }
   
   @Kroll.method @Kroll.setProperty
-  public void setUserId(String id)
+  public void setUserID(String id)
   {
     this.analyticsInstance().setUserId(id);
   }
