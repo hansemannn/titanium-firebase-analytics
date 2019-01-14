@@ -67,6 +67,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   {
     this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
   }
+  
+  @Kroll.method @Kroll.setProperty
+  public void setUserID(String id)
+  {
+    this.analyticsInstance().setUserId(id);
+  }
 
   @Kroll.method @Kroll.setProperty
   public void setScreenNameAndScreenClass(KrollDict parameters)
