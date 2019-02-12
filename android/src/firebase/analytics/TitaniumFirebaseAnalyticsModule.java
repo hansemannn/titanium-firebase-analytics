@@ -19,6 +19,7 @@ import org.appcelerator.titanium.TiBlob;
 import org.appcelerator.titanium.util.TiConvert;
 
 import android.os.Bundle;
+import android.app.Activity;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.analytics.FirebaseAnalytics.Param;
@@ -67,7 +68,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   {
     this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"), TiConvert.toString(parameters, "value"));
   }
-  
+
   @Kroll.method @Kroll.setProperty
   public void setUserID(String id)
   {
@@ -78,14 +79,21 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
   public void setScreenNameAndScreenClass(KrollDict parameters)
   {
     if (!parameters.containsKey("screenName")) {
-      Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key"); 
+      Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
       return;
     }
 
-    String screenName = parameters.getString("screenName");
-    String screenClass = parameters.optString("screenClass", "TiController");
-    
-    this.analyticsInstance().setCurrentScreen(getActivity(), screenName, screenClass);
+    final String screenName = parameters.getString("screenName");
+    final String screenClass = parameters.optString("screenClass", "TiController");
+    final Activity currentActivity = getActivity();
+    final FirebaseAnalytics instance = analyticsInstance();
+
+    currentActivity.runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        instance.setCurrentScreen(currentActivity, screenName, screenClass);
+      }
+    });
   }
 
   private static Bundle mapToBundle(Map<String, Object> map)
