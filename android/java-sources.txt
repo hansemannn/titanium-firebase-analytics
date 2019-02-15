@@ -13,5 +13,6 @@
 "/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/android/support/v7/appcompat/R.java"
 "/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/android/support/v7/cardview/R.java"
 "/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/android/support/v7/recyclerview/R.java"
+"/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/com/google/firebase/measurement/R.java"
 "/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/firebase/analytics/R.java"
 "/Users/hans/Documents/dev/titanium/titanium-firebase-analytics/android/build/generated/r/ti/modules/titanium/ui/R.java"
