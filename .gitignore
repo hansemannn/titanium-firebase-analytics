@@ -32,3 +32,4 @@ nbproject
 /metadata.json
 ios/firebase.analytics-iphone-*.zip
 /ios/dist
+android/.gradle
