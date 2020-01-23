@@ -124,6 +124,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 					Log.e("FirebaseAnalytics",
 						  "Unable to put '" + key + "' value into bundle: " + e.getLocalizedMessage(), e);
 				}
+			} else if (val instanceof Double) {
+				bundle.putDouble(key, TiConvert.toDouble(val));
+			} else if (val instanceof Float) {
+				bundle.putDouble(key, TiConvert.toFloat(val));
+			} else if (val instanceof Integer) {
+				bundle.putDouble(key, TiConvert.toInt(val));
 			} else {
 				bundle.putString(key, TiConvert.toString(val));
 			}
