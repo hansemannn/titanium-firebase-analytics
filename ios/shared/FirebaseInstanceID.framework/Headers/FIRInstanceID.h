@@ -1,3 +1,19 @@
+/*
+ * Copyright 2019 Google
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -193,14 +209,6 @@ NS_SWIFT_NAME(InstanceID)
 - (void)instanceIDWithHandler:(FIRInstanceIDResultHandler)handler;
 
 /**
- *  Returns a Firebase Messaging scoped token for the firebase app.
- *
- *  @return Returns the stored token if the device has registered with Firebase Messaging, otherwise
- *          returns nil.
- */
-- (nullable NSString *)token __deprecated_msg("Use instanceIDWithHandler: instead.");
-
-/**
  *  Returns a token that authorizes an Entity (example: cloud service) to perform
  *  an action on behalf of the application identified by Instance ID.
  *
@@ -228,7 +236,7 @@ NS_SWIFT_NAME(InstanceID)
  *                          passed to the UIApplicationDelegate's
  *                          `didRegisterForRemoteNotificationsWithDeviceToken` method.
  *                          The value for `apns_sandbox` should be a boolean (or an
- *                          NSNumber representing a BOOL in Objective C) set to true if
+ *                          NSNumber representing a BOOL in Objective-C) set to true if
  *                          your app is a debug build, which means that the APNs
  *                          device token is for the sandbox environment. It should be
  *                          set to false otherwise. If the `apns_sandbox` key is not

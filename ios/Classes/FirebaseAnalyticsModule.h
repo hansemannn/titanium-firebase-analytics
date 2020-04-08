@@ -1,8 +1,8 @@
 /**
  * titanium-firebase-analytics
  *
- * Created by Hans Knöchel
- * Copyright (c) 2017-present Hans Knöchel. All rights reserved.
+ * Created by Hans Knoechel
+ * Copyright (c) 2020 by Hans Knöchel. All rights reserved.
  */
 
 #import "TiModule.h"
