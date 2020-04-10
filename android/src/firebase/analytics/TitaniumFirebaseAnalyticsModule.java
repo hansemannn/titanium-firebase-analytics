@@ -47,9 +47,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	@Kroll.method
 	public void resetAnalyticsData()
 	{
-		// TODO: Uncomment once Ti.PlayServices >= 11.6.0 is used
-		// this.analyticsInstance().resetAnalyticsData();
-		Log.e("FirebaseAnalytics", "The \"resetAnalyticsData()\" method on Android requires Ti.PlayServices >= 11.6.0");
+		this.analyticsInstance().resetAnalyticsData();
 	}
 
 	// clang-format off
