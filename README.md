@@ -39,16 +39,11 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 				  <action android:name="com.google.android.gms.measurement.UPLOAD" />
 			   </intent-filter>
 			</receiver>  
-	
+
 			<!-- Only add the GCM-related tags if you are using push notifications as well -->
 			<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
 			   <intent-filter>
 				  <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-			   </intent-filter>
-			</service>
-
-			<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
-			   <intent-filter>
 				  <action android:name="com.google.android.c2dm.intent.SEND" />
 			   </intent-filter>
 			</service>
