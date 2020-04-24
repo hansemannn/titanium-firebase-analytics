@@ -47,9 +47,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	@Kroll.method
 	public void resetAnalyticsData()
 	{
-		// TODO: Uncomment once Ti.PlayServices >= 11.6.0 is used
-		// this.analyticsInstance().resetAnalyticsData();
-		Log.e("FirebaseAnalytics", "The \"resetAnalyticsData()\" method on Android requires Ti.PlayServices >= 11.6.0");
+		this.analyticsInstance().resetAnalyticsData();
 	}
 
 	// clang-format off
@@ -124,6 +122,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 					Log.e("FirebaseAnalytics",
 						  "Unable to put '" + key + "' value into bundle: " + e.getLocalizedMessage(), e);
 				}
+			} else if (val instanceof Double) {
+				bundle.putDouble(key, TiConvert.toDouble(val));
+			} else if (val instanceof Float) {
+				bundle.putDouble(key, TiConvert.toFloat(val));
+			} else if (val instanceof Integer) {
+				bundle.putDouble(key, TiConvert.toInt(val));
 			} else {
 				bundle.putString(key, TiConvert.toString(val));
 			}
