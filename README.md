@@ -1,8 +1,14 @@
 # Firebase Analytics - Titanium Module
 Use the native Firebase SDK in Axway Titanium. This repository is part of the [Titanium Firebase](https://github.com/hansemannn/titanium-firebase) project.
 
-⚠️ This module already comply to the EU General Data Protection Regulation ([GDPR](https://www.eugdpr.org/)) regulation already.
+⚠️ This module complies to the EU General Data Protection Regulation ([GDPR](https://www.eugdpr.org/)) regulation already.
 Use the `enabled` property to enable or disable Analytics and `resetAnalyticsData()` to make Cambridge Analytica angry 😙.
+
+# Supporting this effort
+
+The whole Firebase support in Titanium is developed and maintained by the community (`@hansemannn` and `@m1ga`). To keep
+this project maintained and be able to use the latest Firebase SDK's, please see the "Sponsor" button of this repository,
+thank you!
 
 ## Requirements
 - [x] The [Firebase Core](https://github.com/hansemannn/titanium-firebase-core) module
