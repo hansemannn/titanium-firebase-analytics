@@ -67,7 +67,7 @@
 
 - (void)setEnabled:(NSNumber *)enabled
 {
-  [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[TiUtils boolValue:enabled]];
+  [FIRAnalytics setAnalyticsCollectionEnabled:[TiUtils boolValue:enabled]];
 }
 
 - (void)resetAnalyticsData:(id)unused
@@ -82,8 +82,10 @@
   NSString *screenName = [TiUtils stringValue:@"screenName" properties:arguments];
   NSString *screenClass = [TiUtils stringValue:@"screenClass" properties:arguments def:@"TiController"];
 
-  [FIRAnalytics setScreenName:screenName
-                  screenClass:screenClass];
+  [FIRAnalytics logEventWithName:kFIREventScreenView parameters:@{
+    kFIRParameterScreenClass: screenClass,
+    kFIRParameterScreenName: screenName}
+  ];
 }
 
 - (NSString *)appInstanceID
