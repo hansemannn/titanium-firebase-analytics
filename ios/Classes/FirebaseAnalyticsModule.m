@@ -60,9 +60,13 @@
                               forName:name];
 }
 
-- (void)setUserID:(NSString *)userID
+- (void)setUserID:(id)userID
 {
-  [FIRAnalytics setUserID:userID];
+  if (IS_NULL_OR_NIL(userID)) {
+    [FIRAnalytics setUserID:nil];
+  } else {
+    [FIRAnalytics setUserID:userID];
+  }
 }
 
 - (void)setEnabled:(NSNumber *)enabled
