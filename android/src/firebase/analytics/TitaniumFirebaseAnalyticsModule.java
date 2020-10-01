@@ -7,7 +7,6 @@
 
 package firebase.analytics;
 
-import android.app.Activity;
 import android.os.Bundle;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import java.io.IOException;
@@ -102,7 +101,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		});
 	}
 
-	private static Bundle mapToBundle(Map<String, Object> map)
+	private Bundle mapToBundle(Map<String, Object> map)
 	{
 		if (map == null || map.size() == 0)
 			return null;
