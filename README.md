@@ -129,10 +129,10 @@ app sessions. By default it is enabled.
 Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize
 actions (for example, sending an FCM message).
 
-##### `userID` (String, set, iOS-only)
+##### `userID` (String, set)
 
 The user ID to ascribe to the user of this app on this device, which must be
-non-empty and no more than 256 characters long. Setting userID to nil removes the user ID.
+non-empty and no more than 256 characters long. Setting userID to `null` removes the user ID.
 
 ## Example
 ```js
