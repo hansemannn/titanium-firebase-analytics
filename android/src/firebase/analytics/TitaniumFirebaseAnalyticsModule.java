@@ -96,7 +96,9 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 			@Override
 			public void run()
 			{
-				instance.setCurrentScreen(TiApplication.getInstance().getCurrentActivity(), screenName, screenClass);
+				Bundle bundle = new Bundle(1);
+				bundle.putString(screenName, screenClass);
+				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 			}
 		});
 	}
