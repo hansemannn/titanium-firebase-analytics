@@ -25,22 +25,34 @@ NS_SWIFT_NAME(Analytics)
 ///     <li>ad_activeview</li>
 ///     <li>ad_click</li>
 ///     <li>ad_exposure</li>
-///     <li>ad_impression</li>
 ///     <li>ad_query</li>
+///     <li>ad_reward</li>
 ///     <li>adunit_exposure</li>
+///     <li>app_background</li>
 ///     <li>app_clear_data</li>
+///     <li>app_exception</li>
 ///     <li>app_remove</li>
+///     <li>app_store_refund</li>
+///     <li>app_store_subscription_cancel</li>
+///     <li>app_store_subscription_convert</li>
+///     <li>app_store_subscription_renew</li>
 ///     <li>app_update</li>
+///     <li>app_upgrade</li>
+///     <li>dynamic_link_app_open</li>
+///     <li>dynamic_link_app_update</li>
+///     <li>dynamic_link_first_open</li>
 ///     <li>error</li>
+///     <li>firebase_campaign</li>
 ///     <li>first_open</li>
+///     <li>first_visit</li>
 ///     <li>in_app_purchase</li>
 ///     <li>notification_dismiss</li>
 ///     <li>notification_foreground</li>
 ///     <li>notification_open</li>
 ///     <li>notification_receive</li>
 ///     <li>os_update</li>
-///     <li>screen_view</li>
 ///     <li>session_start</li>
+///     <li>session_start_with_rollout</li>
 ///     <li>user_engagement</li>
 /// </ul>
 ///
@@ -49,7 +61,7 @@ NS_SWIFT_NAME(Analytics)
 ///     reserved. See FIREventNames.h for the list of reserved event names. The "firebase_",
 ///     "google_", and "ga_" prefixes are reserved and should not be used. Note that event names are
 ///     case-sensitive and that logging two events whose names differ only in case will result in
-///     two distinct events.
+///     two distinct events. To manually log screen view events, use the `screen_view` event name.
 /// @param parameters The dictionary of event parameters. Passing nil indicates that the event has
 ///     no parameters. Parameter names can be up to 40 characters long and must start with an
 ///     alphabetic character and contain only alphanumeric characters and underscores. Only NSString
@@ -85,6 +97,8 @@ NS_SWIFT_NAME(Analytics)
 ///     non-empty and no more than 256 characters long. Setting userID to nil removes the user ID.
 + (void)setUserID:(nullable NSString *)userID;
 
+/// This method was deprecated in Firebase 6.29.0.
+///
 /// Sets the current screen name, which specifies the current visual context in your app. This helps
 /// identify the areas in your app where users spend their time and how they interact with your app.
 /// Must be called on the main thread.
@@ -127,8 +141,11 @@ NS_SWIFT_NAME(Analytics)
 ///     session terminates.
 + (void)setSessionTimeoutInterval:(NSTimeInterval)sessionTimeoutInterval;
 
-/// The unique ID for this instance of the application.
-+ (NSString *)appInstanceID;
+/// Returns the unique ID for this instance of the application or nil if
+/// `ConsentType.analyticsStorage` has been set to `ConsentStatus.denied`.
+///
+/// @see `FIRAnalytics+Consent.h`
++ (nullable NSString *)appInstanceID;
 
 /// Clears all analytics data for this instance from the device and resets the app instance ID.
 /// FIRAnalyticsConfiguration values will be reset to the default values.
@@ -147,6 +164,9 @@ NS_SWIFT_NAME(Analytics)
 ///     integer and 64-bit floating-point number). Setting a key's value to [NSNull null] will clear
 ///     that parameter. Passing in a nil dictionary will clear all parameters.
 + (void)setDefaultEventParameters:(nullable NSDictionary<NSString *, id> *)parameters;
+
+/// Unavailable.
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
