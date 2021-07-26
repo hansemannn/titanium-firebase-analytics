@@ -8,10 +8,18 @@
 package firebase.analytics;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.installations.FirebaseInstallations;
+
 import java.io.IOException;
 import java.util.Map;
 import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollFunction;
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
@@ -75,6 +83,20 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	// clang-format on
 	{
 		this.analyticsInstance().setUserId(id);
+	}
+
+	@Kroll.method
+	public void fetchInstallationID(KrollFunction callback) {
+		FirebaseInstallations.getInstance().getId().addOnCompleteListener(task -> {
+			KrollDict data = new KrollDict();
+			if (!task.isSuccessful()) {
+				data.put("success", false);
+			} else {
+				data.put("success", true);
+			}
+
+			data.put("identifier", task.getResult());
+		});
 	}
 
 	// clang-format off
