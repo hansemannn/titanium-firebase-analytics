@@ -5,6 +5,7 @@
  * Copyright (c) 2017-present Hans Knöchel. All rights reserved.
  */
 
+#import <FirebaseInstallations/FirebaseInstallations.h>
 #import "FirebaseAnalyticsModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
@@ -90,6 +91,20 @@
     kFIRParameterScreenClass: screenClass,
     kFIRParameterScreenName: screenName}
   ];
+}
+
+- (NSString *)fetchInstallationID:(id)callback
+{
+  ENSURE_SINGLE_ARG(callback, KrollCallback);
+
+  [[FIRInstallations installations] installationIDWithCompletion:^(NSString * _Nullable identifier, NSError * _Nullable error) {
+    if (error != nil) {
+      [callback call:@[ @{@"success": @(NO), @"error": NULL_IF_NIL(error.localizedDescription) } ] thisObject:self];
+      return;
+    }
+
+    [callback call:@[ @{ @"success": @(YES), @"identifier": NULL_IF_NIL(identifier) } ] thisObject:self];
+  }];
 }
 
 - (NSString *)appInstanceID

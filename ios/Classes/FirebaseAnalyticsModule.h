@@ -21,6 +21,8 @@
 
 - (void)setScreenNameAndScreenClass:(id)arguments;
 
+- (NSString *)fetchInstallationID:(id)callback;
+
 - (NSString *)appInstanceID;
 
 @end
