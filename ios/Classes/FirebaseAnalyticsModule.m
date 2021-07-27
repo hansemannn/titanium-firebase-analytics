@@ -52,6 +52,12 @@
 
 - (void)setUserPropertyString:(id)arguments
 {
+  DEPRECATED_REPLACED(@"userPropertyString", @"5.1.0", @"saveUserProperty({ name: '...', value: '...' })");
+  [self saveUserProperty:arguments];
+}
+
+- (void)saveUserProperty:(id)arguments
+{
   ENSURE_SINGLE_ARG(arguments, NSDictionary);
 
   NSString *value = [arguments objectForKey:@"value"];

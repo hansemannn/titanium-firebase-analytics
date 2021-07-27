@@ -96,7 +96,7 @@ have the same parameters. Up to 500 event names are supported.
 Make sure to check the [Log Events](https://firebase.google.com/docs/analytics/android/events) docs to validate
   that you are using a valid event name (1st parameter) and parameter structure (2nd event).
 
-##### `setUserPropertyString(parameters)`
+##### `saveUserProperty(parameters)`
   - `parameters` (Dictionary)
     - `value` (String)
     - `name` (String)

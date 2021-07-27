@@ -11,7 +11,9 @@
 
 - (void)log:(id)arguments;
 
-- (void)setUserPropertyString:(id)arguments;
+- (void)saveUserProperty:(id)arguments;
+
+- (void)setUserPropertyString:(id)arguments; // DEPRECATED: Use "saveUserProperty(arguments)" method instead
 
 - (void)setUserID:(NSString *)userID;
 

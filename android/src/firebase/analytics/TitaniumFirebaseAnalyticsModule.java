@@ -57,30 +57,31 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		this.analyticsInstance().resetAnalyticsData();
 	}
 
-	// clang-format off
 	@Kroll.method
 	@Kroll.setProperty
 	public void setEnabled(Boolean enabled)
-	// clang-format on
 	{
 		this.analyticsInstance().setAnalyticsCollectionEnabled(enabled);
 	}
 
-	// clang-format off
 	@Kroll.method
 	@Kroll.setProperty
 	public void setUserPropertyString(KrollDict parameters)
-	// clang-format on
 	{
-		this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"),
-												 TiConvert.toString(parameters, "value"));
+		Log.w(LCAT, "The \"userPropertyString\" property is deprecated in favor of the \"saveUserProperty({ name: '...', value: '...'})\" method!");
+		this.saveUserProperty(parameters);
 	}
 
-	// clang-format off
+	@Kroll.method
+	public void saveUserProperty(KrollDict parameters)
+	{
+		this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"),
+				TiConvert.toString(parameters, "value"));
+	}
+
 	@Kroll.method
 	@Kroll.setProperty
 	public void setUserID(String id)
-	// clang-format on
 	{
 		this.analyticsInstance().setUserId(id);
 	}
@@ -99,11 +100,9 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		});
 	}
 
-	// clang-format off
 	@Kroll.method
 	@Kroll.setProperty
 	public void setScreenNameAndScreenClass(KrollDict parameters)
-	// clang-format on
 	{
 		if (!parameters.containsKey("screenName")) {
 			Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
