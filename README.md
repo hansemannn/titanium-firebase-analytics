@@ -11,7 +11,7 @@ this project maintained and be able to use the latest Firebase SDK's, please see
 thank you!
 
 ## Requirements
-- [x] The [Firebase Core](https://github.com/hansemannn/titanium-firebase-core) module
+- [x] The [Firebase Core](https://github.com/hansemannn/titanium-firebase-core) module (iOS only)
 - [x] iOS: Titanium SDK 6.2.0+
 - [x] Android: Titanium SDK 7.0.0+
 
@@ -137,13 +137,13 @@ non-empty and no more than 256 characters long. Setting userID to nil removes th
 ## Example
 ```js
 // Require the Firebase Core module (own project!)
-var FirebaseCore = require('firebase.core');
+if (OS_IOS) {
+  var FirebaseCore = require('firebase.core');
+  FirebaseCore.configure();
+}
 
 // Require the Firebase Analytics module
 var FirebaseAnalytics = require('firebase.analytics');
-
-// Configure Firebase
-FirebaseCore.configure();
 
 // Get the App Instance ID
 Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
