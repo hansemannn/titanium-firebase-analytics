@@ -7,12 +7,19 @@
 
 package firebase.analytics;
 
-import android.app.Activity;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.installations.FirebaseInstallations;
+
 import java.io.IOException;
 import java.util.Map;
 import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollFunction;
 import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
@@ -50,39 +57,52 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		this.analyticsInstance().resetAnalyticsData();
 	}
 
-	// clang-format off
 	@Kroll.method
 	@Kroll.setProperty
 	public void setEnabled(Boolean enabled)
-	// clang-format on
 	{
 		this.analyticsInstance().setAnalyticsCollectionEnabled(enabled);
 	}
 
-	// clang-format off
 	@Kroll.method
 	@Kroll.setProperty
 	public void setUserPropertyString(KrollDict parameters)
-	// clang-format on
 	{
-		this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"),
-												 TiConvert.toString(parameters, "value"));
+		Log.w(LCAT, "The \"userPropertyString\" property is deprecated in favor of the \"saveUserProperty({ name: '...', value: '...'})\" method!");
+		this.saveUserProperty(parameters);
 	}
 
-	// clang-format off
+	@Kroll.method
+	public void saveUserProperty(KrollDict parameters)
+	{
+		this.analyticsInstance().setUserProperty(TiConvert.toString(parameters, "name"),
+				TiConvert.toString(parameters, "value"));
+	}
+
 	@Kroll.method
 	@Kroll.setProperty
 	public void setUserID(String id)
-	// clang-format on
 	{
 		this.analyticsInstance().setUserId(id);
 	}
 
-	// clang-format off
+	@Kroll.method
+	public void fetchInstallationID(KrollFunction callback) {
+		FirebaseInstallations.getInstance().getId().addOnCompleteListener(task -> {
+			KrollDict data = new KrollDict();
+			if (!task.isSuccessful()) {
+				data.put("success", false);
+			} else {
+				data.put("success", true);
+			}
+
+			data.put("identifier", task.getResult());
+		});
+	}
+
 	@Kroll.method
 	@Kroll.setProperty
 	public void setScreenNameAndScreenClass(KrollDict parameters)
-	// clang-format on
 	{
 		if (!parameters.containsKey("screenName")) {
 			Log.e(LCAT, "Unable to set current screen without the missing \"screenName\" key");
@@ -97,12 +117,14 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 			@Override
 			public void run()
 			{
-				instance.setCurrentScreen(TiApplication.getInstance().getCurrentActivity(), screenName, screenClass);
+				Bundle bundle = new Bundle(1);
+				bundle.putString(screenName, screenClass);
+				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 			}
 		});
 	}
 
-	private static Bundle mapToBundle(Map<String, Object> map)
+	private Bundle mapToBundle(Map<String, Object> map)
 	{
 		if (map == null || map.size() == 0)
 			return null;

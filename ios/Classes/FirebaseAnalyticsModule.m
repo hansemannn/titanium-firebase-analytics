@@ -5,6 +5,7 @@
  * Copyright (c) 2017-present Hans Knöchel. All rights reserved.
  */
 
+#import <FirebaseInstallations/FirebaseInstallations.h>
 #import "FirebaseAnalyticsModule.h"
 #import "TiBase.h"
 #import "TiHost.h"
@@ -51,6 +52,12 @@
 
 - (void)setUserPropertyString:(id)arguments
 {
+  DEPRECATED_REPLACED(@"userPropertyString", @"5.1.0", @"saveUserProperty({ name: '...', value: '...' })");
+  [self saveUserProperty:arguments];
+}
+
+- (void)saveUserProperty:(id)arguments
+{
   ENSURE_SINGLE_ARG(arguments, NSDictionary);
 
   NSString *value = [arguments objectForKey:@"value"];
@@ -60,9 +67,13 @@
                               forName:name];
 }
 
-- (void)setUserID:(NSString *)userID
+- (void)setUserID:(id)userID
 {
-  [FIRAnalytics setUserID:userID];
+  if (IS_NULL_OR_NIL(userID)) {
+    [FIRAnalytics setUserID:nil];
+  } else {
+    [FIRAnalytics setUserID:userID];
+  }
 }
 
 - (void)setEnabled:(NSNumber *)enabled
@@ -86,6 +97,20 @@
     kFIRParameterScreenClass: screenClass,
     kFIRParameterScreenName: screenName}
   ];
+}
+
+- (NSString *)fetchInstallationID:(id)callback
+{
+  ENSURE_SINGLE_ARG(callback, KrollCallback);
+
+  [[FIRInstallations installations] installationIDWithCompletion:^(NSString * _Nullable identifier, NSError * _Nullable error) {
+    if (error != nil) {
+      [callback call:@[ @{@"success": @(NO), @"error": NULL_IF_NIL(error.localizedDescription) } ] thisObject:self];
+      return;
+    }
+
+    [callback call:@[ @{ @"success": @(YES), @"identifier": NULL_IF_NIL(identifier) } ] thisObject:self];
+  }];
 }
 
 - (NSString *)appInstanceID
