@@ -116,7 +116,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 			public void run()
 			{
 				Bundle bundle = new Bundle(1);
-				bundle.putString(screenName, screenClass);
+
+				bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+				if (screenClass != null) {
+					bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
+				}
+
 				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 			}
 		});
