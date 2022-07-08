@@ -91,12 +91,15 @@
   ENSURE_SINGLE_ARG(arguments, NSDictionary);
 
   NSString *screenName = [TiUtils stringValue:@"screenName" properties:arguments];
-  NSString *screenClass = [TiUtils stringValue:@"screenClass" properties:arguments def:@"TiController"];
+  NSString *screenClass = [TiUtils stringValue:@"screenClass" properties:arguments];
 
-  [FIRAnalytics logEventWithName:kFIREventScreenView parameters:@{
-    kFIRParameterScreenClass: screenClass,
-    kFIRParameterScreenName: screenName}
-  ];
+  NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{ kFIRParameterScreenName: screenName }];
+
+  if (screenClass != nil) {
+    parameters[kFIRParameterScreenClass] = screenClass;
+  }
+
+  [FIRAnalytics logEventWithName:kFIREventScreenView parameters:parameters];
 }
 
 - (NSString *)fetchInstallationID:(id)callback
