@@ -108,7 +108,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		}
 
 		final String screenName = parameters.getString("screenName");
-		final String screenClass = parameters.optString("screenClass", "TiController");
+		final String screenClass = parameters.getString("screenClass");
 		final FirebaseAnalytics instance = analyticsInstance();
 
 		getActivity().runOnUiThread(new Runnable() {
