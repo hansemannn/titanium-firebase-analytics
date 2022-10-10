@@ -10,11 +10,17 @@ package firebase.analytics;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.installations.FirebaseInstallations;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.concurrent.Executor;
+
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollFunction;
 import org.appcelerator.kroll.KrollModule;
@@ -81,6 +87,22 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	public void setUserID(String id)
 	{
 		this.analyticsInstance().setUserId(id);
+	}
+
+	@Kroll.method
+	public void appInstanceID()
+	{
+		this.analyticsInstance().getAppInstanceId().addOnCompleteListener(new OnCompleteListener<String>() {
+			@Override
+			public void onComplete(@NonNull Task<String> task) {
+				if (task.isSuccessful()) {
+					String appInstanceID = task.getResult();
+					KrollDict kd = new KrollDict();
+					kd.put("appInstanceID", appInstanceID);
+					fireEvent("appInstanceID", kd);
+				}
+			}
+		});
 	}
 
 	@Kroll.method
