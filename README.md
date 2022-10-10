@@ -117,6 +117,11 @@ the areas in your app where users spend their time and how they interact with yo
 
 Clears all analytics data for this app from the device and resets the app instance id.
 
+##### `appInstanceID()` (Android-only)
+
+Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize
+actions (for example, sending an FCM message). Will fire the `appInstanceID` event once it has retrived the ID.
+
 #### Properties
 
 ##### `enabled` (Boolean, set)
@@ -146,7 +151,14 @@ if (OS_IOS) {
 var FirebaseAnalytics = require('firebase.analytics');
 
 // Get the App Instance ID
-Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
+if (OS_IOS) {
+  Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
+} else {
+  FirebaseAnalytics.addEventListener("appInstanceID", function(e){
+    Ti.API.info('App Instance ID: ' + e.appInstanceID);
+  });
+  FirebaseAnalytics.appInstanceID();
+}
 
 // Log to the Firebase console
 FirebaseAnalytics.log('My_Event', { /* Optional arguments */ });
