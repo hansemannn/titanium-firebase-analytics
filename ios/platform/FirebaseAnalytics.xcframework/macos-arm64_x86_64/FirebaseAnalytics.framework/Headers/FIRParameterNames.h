@@ -370,7 +370,7 @@ static NSString *const kFIRParameterItemName NS_SWIFT_NAME(AnalyticsParameterIte
 static NSString *const kFIRParameterItemVariant NS_SWIFT_NAME(AnalyticsParameterItemVariant) =
     @"item_variant";
 
-/// The list of items involved in the transaction. (Array<Dictionary<String, Any>>).
+/// The list of items involved in the transaction expressed as `[[String: Any]]`.
 /// <pre>
 ///     let params = [
 ///       AnalyticsParameterItems : [
