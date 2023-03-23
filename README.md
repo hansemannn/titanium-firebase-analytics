@@ -44,7 +44,7 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 			   <intent-filter>
 				  <action android:name="com.google.android.gms.measurement.UPLOAD" />
 			   </intent-filter>
-			</receiver>  
+			</receiver>
 
 			<!-- Only add the GCM-related tags if you are using push notifications as well -->
 			<service android:name="MY_PACKAGE_NAME.gcm.GcmIntentService" android:exported="false">
@@ -61,7 +61,7 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 			</service>
 		</application>
 	</manifest>
-</android>   
+</android>
 ```
 
 2. Create a file `strings.xml` that is located at:
@@ -117,17 +117,16 @@ the areas in your app where users spend their time and how they interact with yo
 
 Clears all analytics data for this app from the device and resets the app instance id.
 
+##### `fetchAppInstanceID(callback)`
+
+Fetches the app instance ID.
+
 #### Properties
 
 ##### `enabled` (Boolean, set)
 
 Sets whether analytics collection is enabled for this app on this device. This setting is persisted across
 app sessions. By default it is enabled.
-
-##### `appInstanceID` (String, get, iOS-only)
-
-Instance ID provides a unique identifier for each app instance and a mechanism to authenticate and authorize
-actions (for example, sending an FCM message).
 
 ##### `userID` (String, set)
 

@@ -121,4 +121,10 @@
   return [FIRAnalytics appInstanceID];
 }
 
+- (void)fetchAppInstanceID:(id)callback
+{
+  ENSURE_SINGLE_ARG(callback, KrollCallback);
+  [callback call:@[@{ @"appInstanceID": [self appInstanceID]}] thisObject:self];
+}
+
 @end

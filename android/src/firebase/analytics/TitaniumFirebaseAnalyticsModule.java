@@ -99,6 +99,21 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	}
 
 	@Kroll.method
+	public void fetchAppInstanceID(KrollFunction callback) {
+		mFirebaseAnalytics.getAppInstanceId().addOnCompleteListener(task -> {
+			KrollDict data = new KrollDict();
+			if (!task.isSuccessful()) {
+				data.put("success", false);
+			} else {
+				data.put("success", true);
+			}
+
+			data.put("appInstanceID", task.getResult());
+			callback.callAsync(getKrollObject(), data);
+		});
+	}
+
+	@Kroll.method
 	@Kroll.setProperty
 	public void setScreenNameAndScreenClass(KrollDict parameters)
 	{
