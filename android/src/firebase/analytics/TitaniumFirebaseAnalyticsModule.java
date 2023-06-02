@@ -7,12 +7,9 @@
 
 package firebase.analytics;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.installations.FirebaseInstallations;
 
@@ -24,7 +21,6 @@ import org.appcelerator.kroll.KrollModule;
 import org.appcelerator.kroll.annotations.Kroll;
 import org.appcelerator.kroll.common.Log;
 import org.appcelerator.kroll.common.TiConfig;
-import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiBlob;
 import org.appcelerator.titanium.io.TiBaseFile;
 import org.appcelerator.titanium.util.TiConvert;
@@ -36,6 +32,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	private static final boolean DBG = TiConfig.LOGD;
 	private static FirebaseAnalytics mFirebaseAnalytics;
 
+	@SuppressLint("MissingPermission") // Android Studio only doesn't know it's included via tiapp.xml, so all good here!
 	private FirebaseAnalytics analyticsInstance()
 	{
 		if (mFirebaseAnalytics == null) {
@@ -97,6 +94,22 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 			}
 
 			data.put("identifier", task.getResult());
+			callback.callAsync(getKrollObject(), data);
+		});
+	}
+
+	@Kroll.method
+	public void fetchAppInstanceID(KrollFunction callback) {
+		mFirebaseAnalytics.getAppInstanceId().addOnCompleteListener(task -> {
+			KrollDict data = new KrollDict();
+			if (!task.isSuccessful()) {
+				data.put("success", false);
+			} else {
+				data.put("success", true);
+			}
+
+			data.put("appInstanceID", task.getResult());
+			callback.callAsync(getKrollObject(), data);
 		});
 	}
 
@@ -110,7 +123,7 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		}
 
 		final String screenName = parameters.getString("screenName");
-		final String screenClass = parameters.optString("screenClass", "TiController");
+		final String screenClass = parameters.getString("screenClass");
 		final FirebaseAnalytics instance = analyticsInstance();
 
 		getActivity().runOnUiThread(new Runnable() {
@@ -118,7 +131,12 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 			public void run()
 			{
 				Bundle bundle = new Bundle(1);
-				bundle.putString(screenName, screenClass);
+
+				bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+				if (screenClass != null) {
+					bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
+				}
+
 				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 			}
 		});
