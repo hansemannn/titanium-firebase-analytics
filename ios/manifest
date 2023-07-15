@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 7.1.0
+version: 8.0.0
 apiversion: 2
 architectures: arm64 x86_64
 description: titanium-firebase-analytics
@@ -16,4 +16,4 @@ name: titanium-firebase-analytics
 moduleid: firebase.analytics
 guid: 9800b2f6-460e-4caa-bf9a-35b206c5d3af
 platform: iphone
-minsdk: 10.0.0
+minsdk: 11.0.0

@@ -1,0 +1,148 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios13.1-macabi -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Promises
+import Dispatch
+import FBLPromises
+import Foundation
+@_exported import Promises
+import Swift
+import _Concurrency
+final public class Promise<Value> {
+  public typealias ObjCPromise<Value> = FBLPromises.FBLPromise<Value> where Value : AnyObject
+  public init<Value>(_ objCPromise: Promises.Promise<Value>.ObjCPromise<Value>) where Value : AnyObject
+  public static func pending() -> Promises.Promise<Value>
+  convenience public init(_ error: Swift.Error)
+  convenience public init(_ work: @autoclosure () throws -> Value)
+  final public func fulfill(_ resolution: Value)
+  final public func reject(_ error: Swift.Error)
+  final public func asObjCPromise<Value>() -> Promises.Promise<Value>.ObjCPromise<Value> where Value : AnyObject
+  @objc deinit
+}
+extension Promises.Promise : Swift.CustomStringConvertible {
+  final public var description: Swift.String {
+    get
+  }
+}
+extension Dispatch.DispatchQueue {
+  public static var promises: Dispatch.DispatchQueue {
+    get
+    set
+  }
+}
+public func all<Value>(on queue: Dispatch.DispatchQueue = .promises, _ promises: Promises.Promise<Value>...) -> Promises.Promise<[Value]>
+public func all<Value, Container>(on queue: Dispatch.DispatchQueue = .promises, _ promises: Container) -> Promises.Promise<[Value]> where Container : Swift.Sequence, Container.Element == Promises.Promise<Value>
+public func all<A, B>(on queue: Dispatch.DispatchQueue = .promises, _ promiseA: Promises.Promise<A>, _ promiseB: Promises.Promise<B>) -> Promises.Promise<(A, B)>
+public func all<A, B, C>(on queue: Dispatch.DispatchQueue = .promises, _ promiseA: Promises.Promise<A>, _ promiseB: Promises.Promise<B>, _ promiseC: Promises.Promise<C>) -> Promises.Promise<(A, B, C)>
+public func all<A, B, C, D>(on queue: Dispatch.DispatchQueue = .promises, _ promiseA: Promises.Promise<A>, _ promiseB: Promises.Promise<B>, _ promiseC: Promises.Promise<C>, _ promiseD: Promises.Promise<D>) -> Promises.Promise<(A, B, C, D)>
+extension Promises.Promise {
+  @discardableResult
+  final public func always(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping () -> Swift.Void) -> Promises.Promise<Value>
+}
+public func any<Value>(on queue: Dispatch.DispatchQueue = .promises, _ promises: Promises.Promise<Value>...) -> Promises.Promise<[Promises.Maybe<Value>]>
+public func any<Value, Container>(on queue: Dispatch.DispatchQueue = .promises, _ promises: Container) -> Promises.Promise<[Promises.Maybe<Value>]> where Container : Swift.Sequence, Container.Element == Promises.Promise<Value>
+public func any<A, B>(on queue: Dispatch.DispatchQueue = .promises, _ promiseA: Promises.Promise<A>, _ promiseB: Promises.Promise<B>) -> Promises.Promise<(Promises.Maybe<A>, Promises.Maybe<B>)>
+public func any<A, B, C>(on queue: Dispatch.DispatchQueue = .promises, _ promiseA: Promises.Promise<A>, _ promiseB: Promises.Promise<B>, _ promiseC: Promises.Promise<C>) -> Promises.Promise<(Promises.Maybe<A>, Promises.Maybe<B>, Promises.Maybe<C>)>
+public enum Maybe<Value> {
+  case value(Value)
+  case error(Swift.Error)
+  public init(_ value: Value)
+  public init(_ error: Swift.Error)
+  public var value: Value? {
+    get
+  }
+  public var error: Swift.Error? {
+    get
+  }
+}
+extension Promises.Maybe {
+  public func asAnyObject() -> Swift.AnyObject?
+}
+public func asMaybe<Value>(_ value: Swift.AnyObject) -> Promises.Maybe<Value>
+extension Promises.Maybe : Swift.Equatable where Value : Swift.Equatable {
+}
+public func == <Value>(lhs: Promises.Maybe<Value>, rhs: Promises.Maybe<Value>) -> Swift.Bool where Value : Swift.Equatable
+public func != <Value>(lhs: Promises.Maybe<Value>, rhs: Promises.Maybe<Value>) -> Swift.Bool where Value : Swift.Equatable
+extension Promises.Promise {
+  public typealias Async = (@escaping (Value) -> Swift.Void, @escaping (Swift.Error) -> Swift.Void) throws -> Swift.Void
+  convenience public init(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Async)
+}
+public func awaitPromise<Value>(_ promise: Promises.Promise<Value>) throws -> Value
+extension Promises.Promise {
+  public typealias Catch = (Swift.Error) -> Swift.Void
+  @discardableResult
+  final public func `catch`(on queue: Dispatch.DispatchQueue = .promises, _ reject: @escaping Promises.Promise<Value>.Catch) -> Promises.Promise<Value>
+}
+extension Promises.Promise {
+  final public func delay(on queue: Dispatch.DispatchQueue = .promises, _ interval: Foundation.TimeInterval) -> Promises.Promise<Value>
+}
+extension Promises.Promise {
+  public typealias Do<Value> = () throws -> Value
+  convenience public init<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Do<Value>)
+  convenience public init<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Do<Promises.Promise<Value>>)
+}
+public func race<Value>(on queue: Dispatch.DispatchQueue = .promises, _ promises: Promises.Promise<Value>...) -> Promises.Promise<Value>
+public func race<Value>(on queue: Dispatch.DispatchQueue = .promises, _ promises: [Promises.Promise<Value>]) -> Promises.Promise<Value>
+extension Promises.Promise {
+  @discardableResult
+  final public func recover(on queue: Dispatch.DispatchQueue = .promises, _ recovery: @escaping (Swift.Error) throws -> Promises.Promise<Value>) -> Promises.Promise<Value>
+  @discardableResult
+  final public func recover(on queue: Dispatch.DispatchQueue = .promises, _ recovery: @escaping (Swift.Error) throws -> Value) -> Promises.Promise<Value>
+}
+extension Promises.Promise {
+  public typealias Reducer<Element> = (Value, Element) throws -> Promises.Promise<Value>
+  @discardableResult
+  final public func reduce<Element>(on queue: Dispatch.DispatchQueue = .promises, _ items: Element..., combine reducer: @escaping Promises.Promise<Value>.Reducer<Element>) -> Promises.Promise<Value>
+  @discardableResult
+  final public func reduce<Container>(on queue: Dispatch.DispatchQueue = .promises, _ items: Container, _ reducer: @escaping Promises.Promise<Value>.Reducer<Container.Element>) -> Promises.Promise<Value> where Container : Swift.Sequence
+}
+public func retry<Value>(on queue: Dispatch.DispatchQueue = .promises, attempts count: Swift.Int = __FBLPromiseRetryDefaultAttemptsCount, delay interval: Foundation.TimeInterval = __FBLPromiseRetryDefaultDelayInterval, condition predicate: ((_ count: Swift.Int, _ error: Swift.Error) -> Swift.Bool)? = nil, _ work: @escaping () throws -> Promises.Promise<Value>) -> Promises.Promise<Value>
+extension Promises.Promise {
+  public typealias Then<Result> = (Value) throws -> Result
+  @discardableResult
+  final public func then<Result>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Then<Promises.Promise<Result>>) -> Promises.Promise<Result>
+  @discardableResult
+  final public func then<Result>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Then<Result>) -> Promises.Promise<Result>
+  @discardableResult
+  final public func then(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping Promises.Promise<Value>.Then<Swift.Void>) -> Promises.Promise<Value>
+}
+extension Promises.Promise {
+  @discardableResult
+  final public func timeout(on queue: Dispatch.DispatchQueue = .promises, _ interval: Foundation.TimeInterval) -> Promises.Promise<Value>
+}
+extension Promises.Promise {
+  @discardableResult
+  final public func validate(on queue: Dispatch.DispatchQueue = .promises, _ predicate: @escaping (Value) -> Swift.Bool) -> Promises.Promise<Value>
+}
+public func wrap(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping () -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Any?>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Value) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Value?) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value?>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Value, Swift.Error?) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Swift.Error?, Value) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Value?, Swift.Error?) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value?>
+public func wrap<Value>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Swift.Error?, Value?) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<Value?>
+public func wrap<Value1, Value2>(on queue: Dispatch.DispatchQueue = .promises, _ work: @escaping (@escaping (Value1?, Value2?, Swift.Error?) -> Swift.Void) throws -> Swift.Void) -> Promises.Promise<(Value1?, Value2?)>
+public enum PromiseError {
+  case timedOut
+  case validationFailure
+  public static func == (a: Promises.PromiseError, b: Promises.PromiseError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Promises.PromiseError {
+  public init?(_ error: Swift.Error)
+}
+extension Promises.PromiseError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+extension Promises.PromiseError : Swift.Equatable {}
+extension Promises.PromiseError : Swift.Hashable {}
