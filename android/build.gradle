@@ -3,6 +3,11 @@ repositories {
 }
 
 dependencies {
-	implementation 'com.google.firebase:firebase-analytics:21.0.0'
-	implementation 'com.google.firebase:firebase-installations:17.0.1'
+	// We use Firebase BoM to only manage one version that handles all dependencies internally.
+	// Grab the latest version from here https://firebase.google.com/docs/android/learn-more#bom
+	// and also make sure to update all other modules listed in https://github.com/hansemannn/titanium-firebase#features
+	implementation platform('com.google.firebase:firebase-bom:32.6.0')
+
+	implementation 'com.google.firebase:firebase-analytics'
+	implementation 'com.google.firebase:firebase-installations'
 }
