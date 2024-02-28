@@ -76,6 +76,21 @@ all occurrences of `MY_PACKAGE_NAME` with your actual package name (= `<id>` in 
 </resources>
 ```
 
+### Disable AD_ID
+
+If you get a warning about AD_ID usage you can try the following tiapp.xml lines to remove it:
+
+```xml
+<manifest>
+	<application >
+		<meta-data android:name="google_analytics_adid_collection_enabled" android:value="false" />
+		<meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="false" />
+	</application>
+	<uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove" />
+</manifest>
+```
+It might impact you analytics data so only use it if you are sure you don't need it. Check [Google Support: Advertising ID](https://support.google.com/googleplay/android-developer/answer/6048248?hl=en) for more information.
+
 ## Download
 - [x] [Stable release](https://github.com/hansemannn/titanium-firebase-analytics/releases)
 - [x] [![gitTio](http://hans-knoechel.de/shields/shield-gittio.svg?v2)](http://gitt.io/component/firebase.analytics)

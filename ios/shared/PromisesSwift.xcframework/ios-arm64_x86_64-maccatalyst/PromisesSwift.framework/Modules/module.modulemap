@@ -1,0 +1,11 @@
+framework module Promises {
+  umbrella header "PromisesSwift-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module Promises.Swift {
+    header "Promises-Swift.h"
+    requires objc
+}
