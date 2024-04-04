@@ -11,9 +11,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus;
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentType;
 import com.google.firebase.installations.FirebaseInstallations;
 
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.Map;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollFunction;
@@ -31,6 +34,9 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	private static final String LCAT = "TitaniumFirebaseAnalyticsModule";
 	private static final boolean DBG = TiConfig.LOGD;
 	private static FirebaseAnalytics mFirebaseAnalytics;
+
+	public static final int GRANTED = 0;
+	public static final int DENIED = 1;
 
 	@SuppressLint("MissingPermission") // Android Studio only doesn't know it's included via tiapp.xml, so all good here!
 	private FirebaseAnalytics analyticsInstance()
@@ -52,6 +58,41 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	public void resetAnalyticsData()
 	{
 		this.analyticsInstance().resetAnalyticsData();
+	}
+	@Kroll.method
+	public void setConsent(KrollDict opts)
+	{
+		int analyticsStorage = TiConvert.toInt(opts.get("analyticsStorage"), -1);
+		int adStorage = TiConvert.toInt(opts.get("adStorage"), -1);
+		int adUserData = TiConvert.toInt(opts.get("adUserData"), -1);
+		int adPerson = TiConvert.toInt(opts.get("adPersonalization"), -1);
+
+		Map<ConsentType, ConsentStatus> consentMap = new EnumMap<>(ConsentType.class);
+		if (analyticsStorage == GRANTED) {
+			consentMap.put(ConsentType.ANALYTICS_STORAGE, ConsentStatus.GRANTED);
+		} else if (analyticsStorage == DENIED) {
+			consentMap.put(ConsentType.ANALYTICS_STORAGE, ConsentStatus.DENIED);
+		}
+		if (adStorage == GRANTED) {
+			consentMap.put(ConsentType.AD_STORAGE, ConsentStatus.GRANTED);
+		} else if (adStorage == DENIED) {
+			consentMap.put(ConsentType.AD_STORAGE, ConsentStatus.DENIED);
+		}
+		if (adUserData == GRANTED) {
+			consentMap.put(ConsentType.AD_USER_DATA, ConsentStatus.GRANTED);
+		} else if (adUserData == DENIED) {
+			consentMap.put(ConsentType.AD_USER_DATA, ConsentStatus.DENIED);
+		}
+		if (adPerson == GRANTED) {
+			consentMap.put(ConsentType.AD_PERSONALIZATION, ConsentStatus.GRANTED);
+		} else if (adPerson == DENIED) {
+			consentMap.put(ConsentType.AD_PERSONALIZATION, ConsentStatus.DENIED);
+		}
+
+		if (mFirebaseAnalytics != null) {
+			mFirebaseAnalytics.setConsent(consentMap);
+		}
+
 	}
 
 	@Kroll.method
