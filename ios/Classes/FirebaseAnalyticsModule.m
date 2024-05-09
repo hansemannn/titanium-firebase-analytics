@@ -67,6 +67,25 @@
                               forName:name];
 }
 
+- (void)setConsent:(id)arguments
+{
+    ENSURE_SINGLE_ARG(arguments, NSDictionary);
+
+    BOOL analyticsStorage = [TiUtils boolValue:@"analyticsStorage" properties:arguments def:NO];
+    BOOL adStorage = [TiUtils boolValue:@"adStorage" properties:arguments def:NO];
+    BOOL adUserData = [TiUtils boolValue:@"adUserData" properties:arguments def:NO];
+    BOOL adPersonalization = [TiUtils boolValue:@"adPersonalization" properties:arguments def:NO];
+
+    NSDictionary *consentDictionary = @{
+        FIRConsentTypeAnalyticsStorage : analyticsStorage ? FIRConsentStatusGranted : FIRConsentStatusDenied,
+        FIRConsentTypeAdStorage : adStorage ? FIRConsentStatusGranted : FIRConsentStatusDenied,
+        FIRConsentTypeAdUserData : adUserData ? FIRConsentStatusGranted : FIRConsentStatusDenied,
+        FIRConsentTypeAdPersonalization : adPersonalization ? FIRConsentStatusGranted : FIRConsentStatusDenied
+    };
+    
+    [FIRAnalytics setConsent:consentDictionary];
+}
+
 - (void)setUserID:(id)userID
 {
   if (IS_NULL_OR_NIL(userID)) {
