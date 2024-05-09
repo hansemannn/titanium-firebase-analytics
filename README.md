@@ -120,10 +120,10 @@ Set up [consent mode](https://developers.google.com/tag-platform/security/guides
 
 ##### `setConsent(parameters)`
   - `parameters` (Dictionary)
-    - `analyticsStorage` (Boolean)
-    - `adStorage` (Boolean)
-	- `adUserData` (Boolean)
-	- `adPersonalization` (Boolean)
+  - `analyticsStorage` (Boolean)
+  - `adStorage` (Boolean)
+  - `adUserData` (Boolean)
+  - `adPersonalization` (Boolean)
 
 Sets a user property to a given value. Up to 25 user property names are supported. Once set, user
 property values persist throughout the app lifecycle and across sessions.
