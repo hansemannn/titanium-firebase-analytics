@@ -11,9 +11,17 @@ Ti.API.info('App Instance ID: ' + FirebaseAnalytics.appInstanceID);
 FirebaseAnalytics.log('My Event', { /* Optional arguments */ });
 
 // Set user-property string
-FirebaseAnalytics.setUserPropertyString({
+FirebaseAnalytics.saveUserProperty({
 	name: 'My Name',
 	value: 'My Value'
+});
+
+// Set consents
+FirebaseAnalytics.setConsent({
+	analyticsStorage: true,
+	adStorage: true,
+	adUserData: true,
+	adPersonalization: true
 });
 
 // Set User-ID
