@@ -11,9 +11,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentStatus;
+import com.google.firebase.analytics.FirebaseAnalytics.ConsentType;
 import com.google.firebase.installations.FirebaseInstallations;
 
 import java.io.IOException;
+import java.util.EnumMap;
 import java.util.Map;
 import org.appcelerator.kroll.KrollDict;
 import org.appcelerator.kroll.KrollFunction;
@@ -60,6 +63,26 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 	{
 		this.analyticsInstance().setAnalyticsCollectionEnabled(enabled);
 	}
+
+    private ConsentStatus toConsentStatus(boolean granted) {
+        return granted ? ConsentStatus.GRANTED : ConsentStatus.DENIED;
+    }
+
+    @Kroll.method
+    public void setConsent(KrollDict opts) {
+        boolean analyticsStorage = TiConvert.toBoolean(opts, "analyticsStorage", false);
+        boolean adStorage = TiConvert.toBoolean(opts, "adStorage", false);
+        boolean adUserData = TiConvert.toBoolean(opts, "adUserData", false);
+        boolean adPersonalization = TiConvert.toBoolean(opts, "adPersonalization", false);
+
+        Map<ConsentType, ConsentStatus> consentMap = new EnumMap<>(ConsentType.class);
+        consentMap.put(ConsentType.ANALYTICS_STORAGE, toConsentStatus(analyticsStorage));
+        consentMap.put(ConsentType.AD_STORAGE, toConsentStatus(adStorage));
+        consentMap.put(ConsentType.AD_USER_DATA, toConsentStatus(adUserData));
+        consentMap.put(ConsentType.AD_PERSONALIZATION, toConsentStatus(adPersonalization));
+
+        this.analyticsInstance().setConsent(consentMap);
+    }
 
 	@Kroll.method
 	@Kroll.setProperty
