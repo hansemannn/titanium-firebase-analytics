@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ti:module xmlns:ti="http://ti.appcelerator.org" xmlns:android="http://schemas.android.com/apk/res/android">
+	<android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest>
+            <application>
+                <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="true" />
+				<meta-data android:name="google_analytics_default_allow_ad_storage" android:value="true" />
+				<meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="true" />
+				<meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="true" />
+            </application>
+        </manifest>
+    </android>
 	<modules>
 		<!-- Require Firebase Core (https://github.com/hansemannn/titanium-firebase-core) -->
 		<module platform="android">firebase.core</module>

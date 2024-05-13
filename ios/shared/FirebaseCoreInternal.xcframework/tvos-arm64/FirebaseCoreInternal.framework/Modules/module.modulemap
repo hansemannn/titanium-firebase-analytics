@@ -6,6 +6,6 @@ framework module FirebaseCoreInternal {
 }
 
 module FirebaseCoreInternal.Swift {
-    header "FirebaseCoreInternal-Swift.h"
-    requires objc
+  header "FirebaseCoreInternal-Swift.h"
+  requires objc
 }

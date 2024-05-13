@@ -15,6 +15,8 @@
 
 - (void)setUserPropertyString:(id)arguments; // DEPRECATED: Use "saveUserProperty(arguments)" method instead
 
+- (void)setConsent:(id)arguments;
+
 - (void)setUserID:(NSString *)userID;
 
 - (void)setEnabled:(NSNumber *)enabled;
