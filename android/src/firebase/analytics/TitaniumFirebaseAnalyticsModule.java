@@ -126,25 +126,21 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		final String screenClass = parameters.getString("screenClass");
 		final FirebaseAnalytics instance = analyticsInstance();
 
-		getActivity().runOnUiThread(new Runnable() {
-			@Override
-			public void run()
-			{
-				Bundle bundle = new Bundle(1);
+		getActivity().runOnUiThread(() -> {
+            Bundle bundle = new Bundle(1);
 
-				bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
-				if (screenClass != null) {
-					bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
-				}
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+            if (screenClass != null) {
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
+            }
 
-				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
-			}
-		});
+            instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        });
 	}
 
 	private Bundle mapToBundle(Map<String, Object> map)
 	{
-		if (map == null || map.size() == 0)
+		if (map == null || map.isEmpty())
 			return null;
 
 		Bundle bundle = new Bundle(map.size());
