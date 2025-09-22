@@ -28,7 +28,6 @@ NS_SWIFT_NAME(Analytics)
 ///     <li>ad_query</li>
 ///     <li>ad_reward</li>
 ///     <li>adunit_exposure</li>
-///     <li>app_background</li>
 ///     <li>app_clear_data</li>
 ///     <li>app_exception</li>
 ///     <li>app_remove</li>
@@ -66,8 +65,9 @@ NS_SWIFT_NAME(Analytics)
 ///     no parameters. Parameter names can be up to 40 characters long and must start with an
 ///     alphabetic character and contain only alphanumeric characters and underscores. Only String,
 ///     Int, and Double parameter types are supported. String parameter values can be up to 100
-///     characters long. The "firebase_", "google_", and "ga_" prefixes are reserved and should not
-///     be used for parameter names.
+///     characters long for standard Google Analytics properties, and up to 500 characters long for
+///     Google Analytics 360 properties. The "firebase_", "google_", and "ga_" prefixes are reserved
+///     and should not be used for parameter names.
 + (void)logEventWithName:(NSString *)name
               parameters:(nullable NSDictionary<NSString *, id> *)parameters
     NS_SWIFT_NAME(logEvent(_:parameters:));

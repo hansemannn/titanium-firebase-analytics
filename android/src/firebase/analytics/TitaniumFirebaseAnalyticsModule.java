@@ -102,6 +102,26 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		this.analyticsInstance().setAnalyticsCollectionEnabled(enabled);
 	}
 
+    private ConsentStatus toConsentStatus(boolean granted) {
+        return granted ? ConsentStatus.GRANTED : ConsentStatus.DENIED;
+    }
+
+    @Kroll.method
+    public void setConsent(KrollDict opts) {
+        boolean analyticsStorage = TiConvert.toBoolean(opts, "analyticsStorage", false);
+        boolean adStorage = TiConvert.toBoolean(opts, "adStorage", false);
+        boolean adUserData = TiConvert.toBoolean(opts, "adUserData", false);
+        boolean adPersonalization = TiConvert.toBoolean(opts, "adPersonalization", false);
+
+        Map<ConsentType, ConsentStatus> consentMap = new EnumMap<>(ConsentType.class);
+        consentMap.put(ConsentType.ANALYTICS_STORAGE, toConsentStatus(analyticsStorage));
+        consentMap.put(ConsentType.AD_STORAGE, toConsentStatus(adStorage));
+        consentMap.put(ConsentType.AD_USER_DATA, toConsentStatus(adUserData));
+        consentMap.put(ConsentType.AD_PERSONALIZATION, toConsentStatus(adPersonalization));
+
+        this.analyticsInstance().setConsent(consentMap);
+    }
+
 	@Kroll.method
 	@Kroll.setProperty
 	public void setUserPropertyString(KrollDict parameters)
@@ -167,25 +187,21 @@ public class TitaniumFirebaseAnalyticsModule extends KrollModule
 		final String screenClass = parameters.getString("screenClass");
 		final FirebaseAnalytics instance = analyticsInstance();
 
-		getActivity().runOnUiThread(new Runnable() {
-			@Override
-			public void run()
-			{
-				Bundle bundle = new Bundle(1);
+		getActivity().runOnUiThread(() -> {
+            Bundle bundle = new Bundle(1);
 
-				bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
-				if (screenClass != null) {
-					bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
-				}
+            bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+            if (screenClass != null) {
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, screenClass);
+            }
 
-				instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
-			}
-		});
+            instance.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        });
 	}
 
 	private Bundle mapToBundle(Map<String, Object> map)
 	{
-		if (map == null || map.size() == 0)
+		if (map == null || map.isEmpty())
 			return null;
 
 		Bundle bundle = new Bundle(map.size());
