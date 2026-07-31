@@ -1,15 +1,13 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target x86_64-apple-tvos13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FirebaseCoreInternal
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target x86_64-apple-tvos15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FirebaseCoreInternal
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 @_exported import FirebaseCoreInternal
 import Foundation
 import Swift
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-import os.lock
-import os
 @objc(FIRHeartbeatController) @objcMembers public class _ObjC_HeartbeatController : ObjectiveC.NSObject {
   @objc public init(id: Swift.String)
   @objc public func log(_ agent: Swift.String)
@@ -24,22 +22,6 @@ import os
   @objc public var isEmpty: Swift.Bool {
     @objc get
   }
-  @objc deinit
-}
-final public class FIRAllocatedUnfairLock<State> : @unchecked Swift.Sendable {
-  #if compiler(>=5.3) && $SendingArgsAndResults
-  public init(initialState: sending State)
-  #else
-  public init(initialState: __owned State)
-  #endif
-  convenience public init() where State == ()
-  final public func lock()
-  final public func unlock()
-  final public func value() -> State
-  @discardableResult
-  final public func withLock<R>(_ body: (inout State) throws -> R) rethrows -> R
-  @discardableResult
-  final public func withLock<R>(_ body: () throws -> R) rethrows -> R
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class HeartbeatController : Swift.Sendable {
@@ -73,7 +55,32 @@ extension FirebaseCoreInternal.HeartbeatsPayload : Swift.Equatable {
 }
 extension Foundation.Data {
   public func base64URLEncodedString(options: Foundation.Data.Base64EncodingOptions = []) -> Swift.String
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(base64URLEncoded base64URLString: Swift.String, options: Foundation.Data.Base64DecodingOptions = [])
+  #endif
   public func zipped() throws -> Foundation.Data
   public func unzipped() throws -> Foundation.Data
+}
+final public class UnfairLock<Value> : @unchecked Swift.Sendable {
+  #if compiler(>=5.3) && $SendingArgsAndResults
+  public init(_ value: consuming sending Value)
+  #else
+  public init(_ value: consuming Value)
+  #endif
+  @objc deinit
+  final public func value() -> Value
+  #if compiler(>=5.3) && $SendingArgsAndResults
+  @discardableResult
+  final public borrowing func withLock<Result>(_ body: (inout sending Value) throws -> sending Result) rethrows -> sending Result
+  #else
+  @discardableResult
+  final public borrowing func withLock<Result>(_ body: (inout Value) throws -> Result) rethrows -> Result
+  #endif
+  #if compiler(>=5.3) && $SendingArgsAndResults
+  @discardableResult
+  final public borrowing func withLock<Result>(_ body: (inout sending Value) -> sending Result) -> sending Result
+  #else
+  @discardableResult
+  final public borrowing func withLock<Result>(_ body: (inout Value) -> Result) -> Result
+  #endif
 }
