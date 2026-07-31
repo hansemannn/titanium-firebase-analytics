@@ -6,11 +6,15 @@
 	<dict>
 		<key>ios-arm64/GoogleAppMeasurement.framework/GoogleAppMeasurement</key>
 		<data>
-		XXO/d2cfCL4eCRLtk6/8D9SROPg=
+		vOd8HjZ+N1VbkcVWaqr5b+ygE7k=
+		</data>
+		<key>ios-arm64/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		5FLb7xbu84w+W3ORXIr5hfxisSk=
 		</data>
 		<key>ios-arm64/GoogleAppMeasurement.framework/Info.plist</key>
 		<data>
-		aGI0J0W+gG0kBm3FHa/mukNDkkE=
+		+zSMCD3xXiOUTinoazfNq4HDYwU=
 		</data>
 		<key>ios-arm64/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
 		<data>
@@ -18,7 +22,11 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/GoogleAppMeasurement</key>
 		<data>
-		fh5qi2G9h0jeRFxNYDt48zB9TiE=
+		Lysd928Fo7TpObGHLyv7QNX9Y64=
+		</data>
+		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		5FLb7xbu84w+W3ORXIr5hfxisSk=
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/Modules/module.modulemap</key>
 		<data>
@@ -26,15 +34,19 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		rHWhS7kIEgZ+upzKnB2n7NQARPA=
+		jbri5QVK2HXRLi71Ea4rzZ6POI4=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/GoogleAppMeasurement</key>
 		<data>
-		bK0d7WGLZlkCljV0TBDcS1f65TM=
+		rSgUdQQc6qDoPzpVzeBeznC6kt0=
+		</data>
+		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		5FLb7xbu84w+W3ORXIr5hfxisSk=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Info.plist</key>
 		<data>
-		yrCjuAzrETjp6Knx3IcgrltJl2k=
+		jwYoJO8q1pOO+n06C5ulOB2vkN0=
 		</data>
 		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
 		<data>
@@ -42,7 +54,11 @@
 		</data>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/GoogleAppMeasurement</key>
 		<data>
-		Pysj8yJ0dbuXbO34G1x+0E8cerA=
+		Ze6vDGMw/WHJYZDjAPubdE5B8C0=
+		</data>
+		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		6Rf3QkFlnrRsPP705dYaSKS2wvw=
 		</data>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/Modules/module.modulemap</key>
 		<data>
@@ -50,15 +66,19 @@
 		</data>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		rixq56TNlJ/zgoewbVokiZ2OxBQ=
+		2BS/GTi367VptO2ZCIi8KXzA/64=
 		</data>
 		<key>tvos-arm64/GoogleAppMeasurement.framework/GoogleAppMeasurement</key>
 		<data>
-		jeV9ZffbsSFRQVdhl3JtTdlIoIY=
+		o+ZSV0/Un9FrRDWYDE6XFH8dCo8=
+		</data>
+		<key>tvos-arm64/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		5FLb7xbu84w+W3ORXIr5hfxisSk=
 		</data>
 		<key>tvos-arm64/GoogleAppMeasurement.framework/Info.plist</key>
 		<data>
-		oVCAkGH/CkfZ/g7nSkPnGVM3SwA=
+		k+odzRNrH5XUaC8FT2kxtugonos=
 		</data>
 		<key>tvos-arm64/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
 		<data>
@@ -66,11 +86,15 @@
 		</data>
 		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/GoogleAppMeasurement</key>
 		<data>
-		s/7GTWoncoSv217etwojflnsWhA=
+		TC9ufQ8JMIrGCdVYqXAPj6eesTI=
+		</data>
+		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<data>
+		5FLb7xbu84w+W3ORXIr5hfxisSk=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Info.plist</key>
 		<data>
-		e6d0iJ22ItQzxLKCHuesF+hTbp4=
+		zQDZHYphGJm3aYB5BHM1zmyd7Dk=
 		</data>
 		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
 		<data>
@@ -83,22 +107,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XXO/d2cfCL4eCRLtk6/8D9SROPg=
+			vOd8HjZ+N1VbkcVWaqr5b+ygE7k=
 			</data>
 			<key>hash2</key>
 			<data>
-			KC+MGls7dKiJgpBZICRYBvzVH1n5uamUNHbLMv4+vlY=
+			epzywB6fsDrtOzzh4ss8l9qmsBavkZzfKG/1H9dYhS8=
+			</data>
+		</dict>
+		<key>ios-arm64/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5FLb7xbu84w+W3ORXIr5hfxisSk=
+			</data>
+			<key>hash2</key>
+			<data>
+			t0+AjyOna67rTTHwygn4dmkWq8/ws0fTZyKnGXjK/xw=
 			</data>
 		</dict>
 		<key>ios-arm64/GoogleAppMeasurement.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aGI0J0W+gG0kBm3FHa/mukNDkkE=
+			+zSMCD3xXiOUTinoazfNq4HDYwU=
 			</data>
 			<key>hash2</key>
 			<data>
-			H/v0gnN01OrTGonur0iApYcNr+IWNIEWn3YkmTJTva4=
+			mGAjkjILTvbF5wk91zkDvlC2tmNholNpFD/8TW8JBrU=
 			</data>
 		</dict>
 		<key>ios-arm64/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
@@ -117,6 +152,11 @@
 			<key>symlink</key>
 			<string>Versions/Current/GoogleAppMeasurement</string>
 		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Headers</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Headers</string>
+		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Modules</key>
 		<dict>
 			<key>symlink</key>
@@ -131,11 +171,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fh5qi2G9h0jeRFxNYDt48zB9TiE=
+			Lysd928Fo7TpObGHLyv7QNX9Y64=
 			</data>
 			<key>hash2</key>
 			<data>
-			m48fFGUkrkFA18zsQGi1V1Zlz5KESpu/If51h31sKWw=
+			KUYRSwFbk+lA87FDRkNvuxWx8SfUqjD7Fx50fGRDDhU=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5FLb7xbu84w+W3ORXIr5hfxisSk=
+			</data>
+			<key>hash2</key>
+			<data>
+			t0+AjyOna67rTTHwygn4dmkWq8/ws0fTZyKnGXjK/xw=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/A/Modules/module.modulemap</key>
@@ -153,11 +204,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rHWhS7kIEgZ+upzKnB2n7NQARPA=
+			jbri5QVK2HXRLi71Ea4rzZ6POI4=
 			</data>
 			<key>hash2</key>
 			<data>
-			epC1KGLd5E0Mu0IQ15QOa0zrzhOI5NWWyVBXK88dwHs=
+			L0bcJeoXGmwoI7zI7wZ5QE1EUr1IHsGO9d1rzEewncg=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/GoogleAppMeasurement.framework/Versions/Current</key>
@@ -169,22 +220,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bK0d7WGLZlkCljV0TBDcS1f65TM=
+			rSgUdQQc6qDoPzpVzeBeznC6kt0=
 			</data>
 			<key>hash2</key>
 			<data>
-			WiE5HMVyviXtlIM4iGxtnuY9wLtiNAXtOSB8BV0pQCM=
+			KtZoLpSDyrWxSMzINxu4S7sLgeiUTnAOsawVpubZdYI=
+			</data>
+		</dict>
+		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5FLb7xbu84w+W3ORXIr5hfxisSk=
+			</data>
+			<key>hash2</key>
+			<data>
+			t0+AjyOna67rTTHwygn4dmkWq8/ws0fTZyKnGXjK/xw=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			yrCjuAzrETjp6Knx3IcgrltJl2k=
+			jwYoJO8q1pOO+n06C5ulOB2vkN0=
 			</data>
 			<key>hash2</key>
 			<data>
-			doDY9S+ugeMIir5CGMGdQrP7AXxOeNKyXHCsFmeci8U=
+			3P8uYA1JLbvzxhVSommjKzxWM2P6KfavsO2FDl3ZeTc=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
@@ -203,6 +265,11 @@
 			<key>symlink</key>
 			<string>Versions/Current/GoogleAppMeasurement</string>
 		</dict>
+		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Headers</key>
+		<dict>
+			<key>symlink</key>
+			<string>Versions/Current/Headers</string>
+		</dict>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Modules</key>
 		<dict>
 			<key>symlink</key>
@@ -217,11 +284,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Pysj8yJ0dbuXbO34G1x+0E8cerA=
+			Ze6vDGMw/WHJYZDjAPubdE5B8C0=
 			</data>
 			<key>hash2</key>
 			<data>
-			0BdW8VgejgoYSEw888i4duQcLdQsUWnjJp2EDmfwZoc=
+			MmJGHyIzK3eoQsG4wWjISfIPDVbsMqFUZZsEO9fjLHI=
+			</data>
+		</dict>
+		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6Rf3QkFlnrRsPP705dYaSKS2wvw=
+			</data>
+			<key>hash2</key>
+			<data>
+			1p8ymZRvpBAo6cFYublZwrGK94LnD+UVi0qgp1mjJxA=
 			</data>
 		</dict>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/A/Modules/module.modulemap</key>
@@ -239,11 +317,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rixq56TNlJ/zgoewbVokiZ2OxBQ=
+			2BS/GTi367VptO2ZCIi8KXzA/64=
 			</data>
 			<key>hash2</key>
 			<data>
-			sY5mSpFYqE/hAb4rgaG8Yuh0rAaJuJyrY+CL7DfSy+o=
+			Pw7Onr2ImaQZWKZY8sfUZAWvR7lKj6bORAtSUQ3IND8=
 			</data>
 		</dict>
 		<key>macos-arm64_x86_64/GoogleAppMeasurement.framework/Versions/Current</key>
@@ -255,22 +333,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jeV9ZffbsSFRQVdhl3JtTdlIoIY=
+			o+ZSV0/Un9FrRDWYDE6XFH8dCo8=
 			</data>
 			<key>hash2</key>
 			<data>
-			5CkhzTPW/k+lgieUYfzYtYRKnEu3pfIsq0LTfE26h7Y=
+			MFxFdFFycMBHkWA60SwT914YbLd5hMgbQ/QLvT6zJz0=
+			</data>
+		</dict>
+		<key>tvos-arm64/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5FLb7xbu84w+W3ORXIr5hfxisSk=
+			</data>
+			<key>hash2</key>
+			<data>
+			t0+AjyOna67rTTHwygn4dmkWq8/ws0fTZyKnGXjK/xw=
 			</data>
 		</dict>
 		<key>tvos-arm64/GoogleAppMeasurement.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oVCAkGH/CkfZ/g7nSkPnGVM3SwA=
+			k+odzRNrH5XUaC8FT2kxtugonos=
 			</data>
 			<key>hash2</key>
 			<data>
-			qwJcAN0dTCmAi8GPWqIJKjQK9M2C8+OQq1lfFAkqIzg=
+			nUuJs2XsQ1k98m/HIMBDIxjsArd00QgbIFtFdqctDOw=
 			</data>
 		</dict>
 		<key>tvos-arm64/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
@@ -288,22 +377,33 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			s/7GTWoncoSv217etwojflnsWhA=
+			TC9ufQ8JMIrGCdVYqXAPj6eesTI=
 			</data>
 			<key>hash2</key>
 			<data>
-			82JHQT/BwlNApKIPtocosVAptjRfJpfuTXPjLPSfyVM=
+			kM3eorPM96tZzbWlU6oSPe8/TZwPoJi9LApodevZGEg=
+			</data>
+		</dict>
+		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Headers/GoogleAppMeasurement-umbrella.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			5FLb7xbu84w+W3ORXIr5hfxisSk=
+			</data>
+			<key>hash2</key>
+			<data>
+			t0+AjyOna67rTTHwygn4dmkWq8/ws0fTZyKnGXjK/xw=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Info.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			e6d0iJ22ItQzxLKCHuesF+hTbp4=
+			zQDZHYphGJm3aYB5BHM1zmyd7Dk=
 			</data>
 			<key>hash2</key>
 			<data>
-			yFuK97e1ylVzpaSuigXGA2vTrMrAy3lv/sWlqiVxaq0=
+			lMuIPxkAjXAlZBrJYn/DdBnnyzI3jf3AZZwgqUX+r/w=
 			</data>
 		</dict>
 		<key>tvos-arm64_x86_64-simulator/GoogleAppMeasurement.framework/Modules/module.modulemap</key>
