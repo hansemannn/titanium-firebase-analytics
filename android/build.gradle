@@ -1,8 +1,4 @@
-repositories {
-	google()
-}
-
 dependencies {
-	implementation 'com.google.firebase:firebase-analytics:23.0.0'
-	implementation 'com.google.firebase:firebase-installations:19.0.0'
+	implementation 'com.google.firebase:firebase-analytics:24.0.0'
+	implementation 'com.google.firebase:firebase-installations:20.0.0'
 }
